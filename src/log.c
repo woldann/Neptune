@@ -32,12 +32,10 @@ nerror_t log_init()
 #ifdef __WIN32
 
   HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
-  printf("console=%p\n", console);
   if (console) {
     DWORD mode;
     GetConsoleMode(console, &mode);
     SetConsoleMode(console, mode | ENABLE_VIRTUAL_TERMINAL_PROCESSING);
-    printf("enabled\n");
   }
 
 #endif /* ifdef __WIN32 */
@@ -150,7 +148,7 @@ static void log_paw_v(log_file_flags_t log_class, const char *format,
 		if ((flags & log_class) == log_class) {
 			if (log_class == LOG_CLASS_MSG &&
 			    (flags & (LOG_CLASS_TIME | LOG_CLASS_TYPE)) != 0) {
-				char splt_msg[] = ": ";
+				char splt_msg[] = {':', ' '};
 				NFILE_WRITE(file, splt_msg, sizeof(splt_msg));
 			}
 
