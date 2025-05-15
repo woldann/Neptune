@@ -62,9 +62,15 @@
 #ifndef LOG_SFILE_MASK
 #ifdef __WIN32
 
-#define LOG_SFILE_MASK                                                    \
+#define LOG_TEMP_SFILE_MASK                                                    \
 	(LOG_FILE_PRINT_TIME | LOG_FILE_PRINT_TYPE | LOG_FILE_PRINT_MSG | \
 	 LOG_FILE_PRINT_ENDL | LOG_FILE_DONT_CLOSE)
+
+#ifdef LOG_FORCE_COLOR
+#define LOG_SFILE_MASK LOG_TEMP_SFILE_MASK | LOG_FILE_COLORABLE
+#else // !LOG_FORCE_COLOR
+#define LOG_SFILE_MASK LOG_TEMP_SFILE_MASK
+#endif // !LOG_FORCE_COLOR
 
 #else // !__WIN32
 

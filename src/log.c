@@ -28,13 +28,30 @@ nerror_t log_init()
 	if (log_files == NULL)
 		return GET_ERR(LOG_ALLOC_ERROR);
 
+#ifdef LOG_FORCE_COLOR
+#ifdef __WIN32
+
+  HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
+  printf("console=%p\n", console);
+  if (console) {
+    DWORD mode;
+    GetConsoleMode(console, &mode);
+    SetConsoleMode(console, mode | ENABLE_VIRTUAL_TERMINAL_PROCESSING);
+    printf("enabled\n");
+  }
+
+#endif /* ifdef __WIN32 */
+#endif /* ifdef LOG_FORCE_COLOR */
+
 #ifdef LOG_ON_STDOUT
 #if LOG_ON_STDOUT == 1
+
 #ifdef stdout
 	RET_ERR(log_reg_file_ex(stdout, LOG_SFILE_MASK));
 #else /* ifndef stdout */
 #error "stdout not defined!"
 #endif /* ifndef stdout */
+
 #endif /* if LOG_ON_STDOUT == 1 */
 #endif /* ifdef LOG_ON_STDOUT */
 

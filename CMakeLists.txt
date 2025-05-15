@@ -19,5 +19,5 @@ set(TESTS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/tests)
 
 add_executable(logs ${TESTS_DIR}/logs.c)
 target_link_libraries(logs PRIVATE Neptune)
-target_compile_definitions(logs PRIVATE LOG_LEVEL_3 NEPTUNE_MODULERULES_HEADER="neptune_rules.h")
+target_compile_definitions(logs PRIVATE LOG_LEVEL_3 NEPTUNE_MODULERULES_HEADER="neptune_rules.h" LOG_FORCE_COLOR)
 target_include_directories(logs PRIVATE ${NTHREAD_INCLUDE_DIR})
