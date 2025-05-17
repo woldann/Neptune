@@ -183,7 +183,7 @@ nerror_t log_log_v(color_t color, const char *type, const char *format,
 	NMUTEX_LOCK(log_mutex);
 
 	char time[8];
-	ntime_ge_str(time);
+	ntime_get_elapsed_str(time);
 	log_set_color(color);
 
 #ifdef MODULE

@@ -64,7 +64,7 @@ nerror_t neptune_init()
 #ifdef MODULE
 
 #else /* ifndef MODULE */
-	srand(ntime_st);
+	srand(ntime_get_unix());
 #endif /* ifndef MODULE */
 
 	return N_OK;
