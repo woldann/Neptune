@@ -1,9 +1,23 @@
-/*
+/**
  * Copyright (C) 2024, 2025 Serkan Aksoy
  * All rights reserved.
  *
  * This file is part of the Neptune project.
  * It may not be copied or distributed without permission.
+ */
+
+/**
+ * @file nmem.h
+ * @brief Neptune library - Memory management subsystem.
+ *
+ * This header defines simple macros that wrap the standard C library
+ * memory management functions for allocation, reallocation, and freeing:
+ * - `N_ALLOC(size)` for `malloc`
+ * - `N_REALLOC(addr, new_size)` for `realloc`
+ * - `N_FREE(addr)` for `free`
+ *
+ * These macros provide a consistent interface for dynamic memory operations
+ * throughout the Neptune project.
  */
 
 #ifndef __NMEM_H__

@@ -6,6 +6,21 @@
  * It may not be copied or distributed without permission.
  */
 
+/**
+ * @file nfile.h
+ * @brief Platform-independent file handling abstraction for the Neptune library.
+ *
+ * This header provides a unified interface for basic file operations such as open, read,
+ * write, print, and delete — compatible with multiple platforms and execution contexts.
+ *
+ * The file operations are selectively enabled or disabled at compile time using
+ * macros such as `NFILE_DISABLE_READ`, `NFILE_DISABLE_WRITE`, or `NFILE_DISABLE`.
+ * This allows fine-grained control over the feature set to optimize footprint and
+ * platform-specific requirements.
+ *
+ */
+
+
 #ifndef __NFILE_H__
 #define __NFILE_H__
 

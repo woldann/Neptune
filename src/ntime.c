@@ -8,15 +8,15 @@
 
 #include "ntime.h"
 
-ntime_t ntime_st;
+ntime_t ntime_start;
 
 nerror_t ntime_init(void)
 {
-	ntime_st = ntime_gu();
+	ntime_start = ntime_get_unix();
 	return N_OK;
 }
 
-ntime_t ntime_gu(void)
+ntime_t ntime_get_unix(void)
 {
 #ifdef MODULE
 
@@ -36,14 +36,14 @@ ntime_t ntime_gu(void)
 #endif /* ifndef MODULE */
 }
 
-ntime_t ntime_ge(void)
+ntime_t ntime_get_elapsed(void)
 {
-	return ntime_gu() - ntime_st;
+	return ntime_get_unix() - ntime_start;
 }
 
-void ntime_ge_str(char *str)
+void ntime_get_elapsed_str(char *str)
 {
-	ntime_t sec = ntime_ge();
+	ntime_t sec = ntime_get_elapsed();
 	ntime_t min = sec / 60;
 	ntime_t hour = min / 60;
 

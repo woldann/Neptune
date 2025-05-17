@@ -8,7 +8,6 @@
 
 #include "neptune.h"
 #include "nerror.h"
-#include "ninit.h"
 
 typedef nerror_t (*neptune_init_fn)(void);
 

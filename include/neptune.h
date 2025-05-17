@@ -1,9 +1,20 @@
-/*
+/**
  * Copyright (C) 2024, 2025 Serkan Aksoy
  * All rights reserved.
  *
  * This file is part of the Neptune project.
  * It may not be copied or distributed without permission.
+ */
+
+/**
+ * @file neptune.h
+ * @brief Core configuration and utilities for the Neptune library.
+ *
+ * This header defines global metadata macros (author, license, version, etc.),
+ * macro utilities for argument counting, and portable implementations of
+ * common memory search functions (memmem, memstr).
+ *
+ * Part of the Neptune base library for cross-platform system-level development.
  */
 
 #ifndef __NEPTUNE_H__
@@ -119,8 +130,22 @@ MODULE_DESCRIPTION(DESCRIPTION);
 #define NEPTUNE_INIT_ERROR_E (NEPTUNE_INIT_ERROR + NINIT_FUNC_COUNT)
 #define NEPTUNE_ERROR_E (NEPTUNE_INIT_ERROR_E)
 
+/**
+* @brief Initialize the Neptune core system.
+*
+* This function sets up all global and platform-specific subsystems required by the Neptune library.
+* It must be called before using any other Neptune-provided functionality.
+*
+* @return Error code indicating success or failure of initialization.
+*/
 nerror_t neptune_init(void);
 
+/**
+* @brief Shutdown and clean up the Neptune core system.
+*
+* This function releases all resources allocated during initialization and runtime.
+* It should be called once when the application is finished using the Neptune library.
+*/
 void neptune_destroy(void);
 
 #ifndef memmem

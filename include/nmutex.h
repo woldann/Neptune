@@ -1,9 +1,22 @@
-/*
+/**
  * Copyright (C) 2024, 2025 Serkan Aksoy
  * All rights reserved.
  *
  * This file is part of the Neptune project.
  * It may not be copied or distributed without permission.
+ */
+
+/**
+ * @file nmutex.h
+ * @brief Neptune library - Mutex managment subsystem.
+ *
+ * This header defines macros wrapping platform-specific mutex operations,
+ * providing a uniform interface to initialize, lock, and unlock mutexes.
+ *
+ * Macros:
+ * - `NMUTEX_INIT(mutex)`: Initialize the mutex.
+ * - `NMUTEX_LOCK(mutex)`: Acquire the mutex lock.
+ * - `NMUTEX_UNLOCK(mutex)`: Release the mutex lock.
  */
 
 #ifndef __NMUTEX_H__
@@ -26,6 +39,7 @@
 #define NMUTEX HANDLE
 
 HANDLE nmutex_init();
+
 void nmutex_lock(HANDLE nmutex);
 
 #define NMUTEX_INIT(nmutex) (nmutex = nmutex_init())
