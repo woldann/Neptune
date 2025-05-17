@@ -150,14 +150,22 @@ void neptune_destroy(void);
 
 #ifndef memmem
 
-void *memmem(register const void *haystack, size_t haystacklen,
+#define NEPTUNE_DEFINE_MEMMEM
+
+void *neptune_memmem(register const void *haystack, size_t haystacklen,
 	     const void *needle, size_t needlelen);
+
+#define memmem(haystack, haystacklen, needle, needlelen) _memmem(haystack, haystacklen, needle, needlelen)
 
 #endif // !memmem
 
 #ifndef memstr
 
-void *memstr(const void *haystack, const char *needle, size_t haystacklen);
+#define NEPTUNE_DEFINE_MEMSTR
+
+void *neptune_memstr(const void *haystack, const char *needle, size_t haystacklen);
+
+#define memset(haystack, needle, needlelen) _memstr(haystack, needle, needlelen)
 
 #endif /* !memstr */
 
