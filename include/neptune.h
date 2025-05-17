@@ -165,7 +165,7 @@ void *neptune_memmem(register const void *haystack, size_t haystacklen,
 
 void *neptune_memstr(const void *haystack, const char *needle, size_t haystacklen);
 
-#define memset(haystack, needle, needlelen) _memstr(haystack, needle, needlelen)
+#define memstr(haystack, needle, needlelen) _memstr(haystack, needle, needlelen)
 
 #endif /* !memstr */
 
