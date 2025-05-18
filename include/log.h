@@ -75,7 +75,7 @@
 #ifndef LOG_SFILE_MASK
 #ifdef __WIN32
 
-#define LOG_TEMP_SFILE_MASK                                                    \
+#define LOG_TEMP_SFILE_MASK                                               \
 	(LOG_FILE_PRINT_TIME | LOG_FILE_PRINT_TYPE | LOG_FILE_PRINT_MSG | \
 	 LOG_FILE_PRINT_ENDL | LOG_FILE_DONT_CLOSE)
 
@@ -123,7 +123,7 @@ typedef int8_t log_file_flags_t;
 
 // Represents a log output target and its formatting flags
 struct log_file {
-	nfile_t file;                 // File or stream to write log output to
+	nfile_t file; // File or stream to write log output to
 	log_file_flags_t file_flags; // Bitmask of LOG_CLASS_* flags
 };
 
@@ -215,19 +215,20 @@ nerror_t log_log(color_t color, const char *type, const char *format, ...);
 // Convenience macros for simplified logging
 
 #define LOG_V(color, type, format, list) \
-	log_log_v(color, type, format, list)  // Log with va_list
+	log_log_v(color, type, format, list) // Log with va_list
 
 #define LOG(color, type, format, ...) \
-	log_log(color, type, format, ##__VA_ARGS__)  // Log with variadic arguments
+	log_log(color, type, format,  \
+		##__VA_ARGS__) // Log with variadic arguments
 
 #define LOG_INFO(format, ...) \
-	log_info(format, ##__VA_ARGS__)  // Shorthand for informational logs
+	log_info(format, ##__VA_ARGS__) // Shorthand for informational logs
 
 #define LOG_WARN(format, ...) \
-	log_warn(format, ##__VA_ARGS__)  // Shorthand for warning logs
+	log_warn(format, ##__VA_ARGS__) // Shorthand for warning logs
 
 #define LOG_ERROR(format, ...) \
-	log_error(format, ##__VA_ARGS__)  // Shorthand for error logs
+	log_error(format, ##__VA_ARGS__) // Shorthand for error logs
 
 #endif // !__LOG_H__
 #else // !LOG_LEVEL_1

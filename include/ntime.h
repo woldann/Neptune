@@ -22,8 +22,7 @@
 
 #include "neptune.h"
 
-
-typedef uint64_t ntime_t;  /**< Type representing time values */
+typedef uint64_t ntime_t; /**< Type representing time values */
 
 /** 
  * @brief External global variable storing the system start time.
@@ -74,6 +73,5 @@ ntime_t ntime_get_elapsed(void);
  * @note The buffer must be exactly 8 bytes to hold the output.
  */
 void ntime_get_elapsed_str(char *str);
-
 
 #endif // !__NTIME_H__

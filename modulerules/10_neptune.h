@@ -11,11 +11,9 @@
 #include "log.h"
 
 #ifdef __NTIME_H__
-  NEPTUNE_MODULE_INIT(ntime_init)
+NEPTUNE_MODULE_INIT(ntime_init)
 #endif /* ifdef __NTIME_H__ */
 
 #ifdef __LOG_H__
-  NEPTUNE_MODULE_INIT(log_init)
+NEPTUNE_MODULE_INIT(log_init)
 #endif /* ifdef __LOG_H__ */
-
-

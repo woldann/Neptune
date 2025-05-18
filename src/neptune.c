@@ -24,12 +24,12 @@ typedef void (*neptune_destroy_fn)(void);
 #undef NEPTUNE_MODULE_INIT
 #undef NEPTUNE_MODULE_DESTROY
 
-#define NEPTUNE_MODULE_INIT(init_fn) ((neptune_init_fn) (init_fn)),
+#define NEPTUNE_MODULE_INIT(init_fn) ((neptune_init_fn)(init_fn)),
 #define NEPTUNE_MODULE_DESTROY(destroy_fn)
 #define NEPTUNE_MODULE(init_fn, destroy_fn) NEPTUNE_MODULE_INIT(init_fn)
 
 neptune_init_fn neptune_init_funcs[] = {
-    #include NEPTUNE_MODULERULES_HEADER
+#include NEPTUNE_MODULERULES_HEADER
 };
 
 #undef NEPTUNE_MODULE
@@ -37,11 +37,11 @@ neptune_init_fn neptune_init_funcs[] = {
 #undef NEPTUNE_MODULE_DESTROY
 
 #define NEPTUNE_MODULE_INIT(init_fn)
-#define NEPTUNE_MODULE_DESTROY(destroy_fn) ((neptune_destroy_fn) (destroy_fn)),
+#define NEPTUNE_MODULE_DESTROY(destroy_fn) ((neptune_destroy_fn)(destroy_fn)),
 #define NEPTUNE_MODULE(init_fn, destroy_fn) NEPTUNE_MODULE_DESTROY(destroy_fn)
 
 neptune_destroy_fn neptune_destroy_funcs[] = {
-    #include NEPTUNE_MODULERULES_HEADER
+#include NEPTUNE_MODULERULES_HEADER
 };
 
 #undef NEPTUNE_MODULE
@@ -82,7 +82,7 @@ void neptune_destroy()
 #ifndef NEPTUNE_DEFINE_MEMMEM
 
 void *neptune_memmem(register const void *haystack, size_t haystacklen,
-	     const void *needle, size_t needlelen)
+		     const void *needle, size_t needlelen)
 {
 	if (haystacklen < needlelen)
 		return NULL;
@@ -103,7 +103,7 @@ void *neptune_memmem(register const void *haystack, size_t haystacklen,
 #ifndef NEPTUNE_DEFINE_MEMSTR
 
 void *neptune_memstr(register const void *haystack, const char *needle,
-	     size_t haystacklen)
+		     size_t haystacklen)
 {
 	return neptune_memmem(haystack, haystacklen, needle, strlen(needle));
 }

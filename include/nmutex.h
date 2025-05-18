@@ -34,7 +34,7 @@
 
 #else // !MODULE
 
-#ifdef __WIN32 
+#ifdef __WIN32
 
 #define NMUTEX HANDLE
 

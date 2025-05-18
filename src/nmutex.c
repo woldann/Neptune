@@ -14,19 +14,19 @@
 
 HANDLE nmutex_init()
 {
-  return CreateMutex(NULL, FALSE, NULL);
+	return CreateMutex(NULL, FALSE, NULL);
 }
 
 void nmutex_lock(HANDLE nmutex)
 {
-  WaitForSingleObject(nmutex, INFINITE);
+	WaitForSingleObject(nmutex, INFINITE);
 }
 
 #else /* ifndef __WIN32 */
 
 void nmutex_init(pthread_mutex_t *mutex)
 {
-  pthread_mutex_init(mutex, NULL);
+	pthread_mutex_init(mutex, NULL);
 }
 
 #endif /* ifndef __WIN32 */

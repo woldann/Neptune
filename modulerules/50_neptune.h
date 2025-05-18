@@ -10,5 +10,5 @@
 #include "log.h"
 
 #ifdef __LOG_H__
-    NEPTUNE_MODULE_DESTROY(log_destroy)
+NEPTUNE_MODULE_DESTROY(log_destroy)
 #endif

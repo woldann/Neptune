@@ -25,7 +25,6 @@
  * different modules of the project.
  */
 
-
 #ifdef DISABLE_LOGS
 
 // If logs are disabled, undefine all logging levels
@@ -114,4 +113,3 @@
 #endif // LOG_LEVEL_1
 
 #endif // !DISABLE_LOGS
-

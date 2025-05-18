@@ -25,11 +25,9 @@ void nfile_close(nfile_t nfile)
 
 void nfile_delete(const nfile_path_t path)
 {
-
 #ifdef __WIN32
-  DeleteFileW(path);
+	DeleteFileW(path);
 #endif /* ifdef __WIN32 */
-
 }
 
 ssize_t nfile_get_length(nfile_t nfile)
@@ -244,4 +242,3 @@ nfile_t nfile_open_wr(const nfile_path_t pathname)
 #endif // !defined(NFILE_DISABLE_RDWR) || NFILE_DISABLE_RDWR != 1
 
 #endif // !defined(NFILE_DISABLE) || NFILE_DISABLE != 1
-

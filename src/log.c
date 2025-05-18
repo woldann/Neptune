@@ -31,12 +31,13 @@ nerror_t log_init()
 #ifdef LOG_FORCE_COLOR
 #ifdef __WIN32
 
-  HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
-  if (console) {
-    DWORD mode;
-    GetConsoleMode(console, &mode);
-    SetConsoleMode(console, mode | ENABLE_VIRTUAL_TERMINAL_PROCESSING);
-  }
+	HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
+	if (console) {
+		DWORD mode;
+		GetConsoleMode(console, &mode);
+		SetConsoleMode(console,
+			       mode | ENABLE_VIRTUAL_TERMINAL_PROCESSING);
+	}
 
 #endif /* ifdef __WIN32 */
 #endif /* ifdef LOG_FORCE_COLOR */
@@ -57,7 +58,7 @@ nerror_t log_init()
 	RET_ERR(log_reg_file(LOG_FILE_PATH));
 #endif /* ifdef LOG_FILE_PATH */
 
-  log_set_color(COLOR_RESET);
+	log_set_color(COLOR_RESET);
 
 	return N_OK;
 }
@@ -118,10 +119,10 @@ nerror_t log_reg_file_ex(nfile_t file, log_file_flags_t file_flags)
 nerror_t log_reg_file(nfile_path_t path)
 {
 	nfile_t file = nfile_open_w(path);
-  if (file == NULL)
-    return GET_ERR(LOG_NFILE_OPEN_W_ERR);
+	if (file == NULL)
+		return GET_ERR(LOG_NFILE_OPEN_W_ERR);
 
-  nerror_t error = log_reg_file_ex(file, LOG_DFILE_MASK);
+	nerror_t error = log_reg_file_ex(file, LOG_DFILE_MASK);
 	if (HAS_ERR(error)) {
 		NFILE_CLOSE(file);
 		return error;
@@ -148,7 +149,7 @@ static void log_paw_v(log_file_flags_t log_class, const char *format,
 		if ((flags & log_class) == log_class) {
 			if (log_class == LOG_CLASS_MSG &&
 			    (flags & (LOG_CLASS_TIME | LOG_CLASS_TYPE)) != 0) {
-				char splt_msg[] = {':', ' '};
+				char splt_msg[] = { ':', ' ' };
 				NFILE_WRITE(file, splt_msg, sizeof(splt_msg));
 			}
 

@@ -20,11 +20,11 @@ ntime_t ntime_get_unix(void)
 {
 #ifdef MODULE
 
-  #include <linux/ktime.h>
-  #include <linux/timekeeping.h>
+#include <linux/ktime.h>
+#include <linux/timekeeping.h>
 
 	struct timespec64 ts;
-  ktime_get_real_ts64(&ts);
+	ktime_get_real_ts64(&ts);
 	return (ntime_t)ts.tv_sec;
 
 #else /* ifndef MODULE */

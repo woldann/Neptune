@@ -20,7 +20,6 @@
  *
  */
 
-
 #ifndef __NFILE_H__
 #define __NFILE_H__
 
@@ -69,15 +68,15 @@ typedef nfile_char_t *nfile_path_t;
 
 #include "neptune.h"
 
-
 #ifdef __WIN32
-#define NFILE_PATH_GET_LENGTH(nfile_path) ((size_t) wcslen(nfile_path))
+#define NFILE_PATH_GET_LENGTH(nfile_path) ((size_t)wcslen(nfile_path))
 #else // !__WIN32
-#define NFILE_PATH_GET_LENGTH(nfile_path) ((size_t) strlen(nfile_path))
+#define NFILE_PATH_GET_LENGTH(nfile_path) ((size_t)strlen(nfile_path))
 #endif // !__WIN32
 
 #define NFILE_PATH_CALC_SIZE(length) ((length + 1) * sizeof(nfile_char_t))
-#define NFILE_PATH_GET_SIZE(nfile_path) (NFILE_PATH_CALC_SIZE(NFILE_PATH_GET_LENGTH(nfile_path)))
+#define NFILE_PATH_GET_SIZE(nfile_path) \
+	(NFILE_PATH_CALC_SIZE(NFILE_PATH_GET_LENGTH(nfile_path)))
 #define NFILE_MAX_PATH_SIZE (NFILE_PATH_CALC_SIZE(NFILE_MAX_PATH_LENGTH))
 
 #if defined(NFILE_DISABLE_READ) && defined(NFILE_DISABLE_WRITE)
@@ -169,7 +168,8 @@ ssize_t nfile_printf(nfile_t nfile, const char *format, ...);
 #endif // !defined(NFILE_DISABLE_WRITE) || NFILE_DISABLE_WRITE != 1
 
 #if !defined(NFILE_DISABLE_RDWR) || NFILE_DISABLE_RDWR != 1
-#if (defined(NFILE_DISABLE_READ) && NFILE_DISABLE_READ == 1) || (defined(NFILE_DISABLE_WRITE) && NFILE_DISABLE_WRITE == 1)
+#if (defined(NFILE_DISABLE_READ) && NFILE_DISABLE_READ == 1) || \
+	(defined(NFILE_DISABLE_WRITE) && NFILE_DISABLE_WRITE == 1)
 
 #ifdef NFILE_DISABLE_RDWR
 #undef NFILE_DISABLE_RDWR

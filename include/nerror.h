@@ -63,7 +63,7 @@ typedef error_t nerror_t;
 typedef int nerror_t;
 #endif // !error_t
 
-#define N_OK  0x00 // No error
+#define N_OK 0x00 // No error
 #define N_ERR 0x01 // Generic error code
 
 /**
@@ -80,7 +80,7 @@ nerror_t nerror_create(nerror_t error);
 
 typedef bool nerror_t;
 
-#define N_OK  true  // No error
+#define N_OK true // No error
 #define N_ERR false // Error occurred
 
 #define HAS_ERROR(error) (error == N_ERR)
@@ -91,11 +91,11 @@ typedef bool nerror_t;
 /**
  * @brief Return early if an error is detected.
  */
-#define RET_ERROR(error)                  \
-	do {                              \
+#define RET_ERROR(error)                    \
+	do {                                \
 		nerror_t __error = (error); \
-		if (HAS_ERROR(__error))   \
-			return __error;   \
+		if (HAS_ERROR(__error))     \
+			return __error;     \
 	} while (0)
 
 // Convenience macros
@@ -104,4 +104,3 @@ typedef bool nerror_t;
 #define GET_ERR(error) GET_ERROR(error)
 
 #endif // !__NERROR_H__
-
