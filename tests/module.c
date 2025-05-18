@@ -13,19 +13,19 @@ static int __init neptune_module_init(void)
 {
 	printk(KERN_INFO "neptune module initializing");
 	if (HAS_ERR(neptune_init())) {
-    printk(KERN_ERR "neptune_init error");
+		printk(KERN_ERR "neptune_init error");
 		return 1;
 	}
 
-  LOG_INFO("log system check");
+	LOG_INFO("log system check");
 	return 0;
 }
 
 static void __exit neptune_module_exit(void)
 {
 	printk(KERN_INFO "neptune module is unloading\n");
-  LOG_INFO("neptune_destroy check");
-  neptune_destroy();
+	LOG_INFO("neptune_destroy check");
+	neptune_destroy();
 }
 
 module_init(neptune_module_init);
