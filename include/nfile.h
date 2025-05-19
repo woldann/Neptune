@@ -30,7 +30,6 @@
  * It may not be copied or distributed without permission.
  */
 
-
 #ifndef __NFILE_H__
 #define __NFILE_H__
 

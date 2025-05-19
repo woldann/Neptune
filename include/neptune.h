@@ -98,7 +98,7 @@ MODULE_DESCRIPTION(DESCRIPTION);
 #else // !MODULE
 
 #ifdef __WIN32
-#define LOG_FILE_PATH L"neptune.log"
+// #define LOG_FILE_PATH L"neptune.log"
 #else // !__WIN32
 #define LOG_FILE_PATH "neptune.log"
 #endif // !__WIN32
