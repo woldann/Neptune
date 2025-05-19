@@ -149,7 +149,7 @@ void *neptune_memmem(register const void *haystack, size_t haystacklen,
 		     const void *needle, size_t needlelen);
 
 #define memmem(haystack, haystacklen, needle, needlelen) \
-	_memmem(haystack, haystacklen, needle, needlelen)
+	neptune_memmem(haystack, haystacklen, needle, needlelen)
 
 #endif // !memmem
 
@@ -160,7 +160,8 @@ void *neptune_memmem(register const void *haystack, size_t haystacklen,
 void *neptune_memstr(const void *haystack, const char *needle,
 		     size_t haystacklen);
 
-#define memstr(haystack, needle, needlelen) _memstr(haystack, needle, needlelen)
+#define memstr(haystack, needle, needlelen) \
+	neptune_memstr(haystack, needle, needlelen)
 
 #endif /* !memstr */
 
