@@ -119,7 +119,7 @@
 
 #endif // !LOG_DFILE_MASK
 
-#define LOG_ERROR 0x6100
+#define LOG_ERROR_S 0x6100
 
 #define LOG_ALLOC_ERROR 0x6101
 #define LOG_REALLOC_ERROR 0x6102
