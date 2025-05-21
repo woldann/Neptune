@@ -136,7 +136,7 @@ nerror_t log_reg_file(nfile_path_t path)
 {
 	nfile_t file = nfile_open_w(path);
 	if (file == NULL)
-		return GET_ERR(LOG_NFILE_OPEN_W_ERR);
+		return GET_ERR(LOG_NFILE_OPEN_W_ERROR);
 
 	nerror_t error = log_reg_file_ex(file, LOG_DFILE_MASK);
 	if (HAS_ERR(error)) {
