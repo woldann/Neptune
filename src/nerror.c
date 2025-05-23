@@ -35,7 +35,7 @@ nerror_t nerror_create(nerror_t error)
 	log_error("An error created, code: %d 0x%X", error, error);
 #endif /* ifdef LOG_LEVEL_1 */
 
-	return true;
+	return error;
 }
 
 #endif /* if NERROR_LEVEL == 1 */
