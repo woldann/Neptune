@@ -36,7 +36,7 @@ static size_t log_file_count = 0;
 
 static NMUTEX log_mutex;
 
-nerror_t log_init()
+nerror_t LOG_API log_init()
 {
 	NMUTEX_INIT(log_mutex);
 
@@ -79,7 +79,7 @@ nerror_t log_init()
 	return N_OK;
 }
 
-void log_destroy()
+void LOG_API log_destroy()
 {
 	if (log_files != NULL) {
 		while (log_file_count > 0) {
@@ -99,7 +99,7 @@ void log_destroy()
 #endif /* ifdef NMUTEX_DESTROY */
 }
 
-void log_set_color(color_t color)
+void LOG_API log_set_color(color_t color)
 {
 	if (color == NULL)
 		return;
@@ -111,7 +111,7 @@ void log_set_color(color_t color)
 	}
 }
 
-nerror_t log_reg_file_ex(nfile_t file, log_file_flags_t file_flags)
+nerror_t LOG_API log_reg_file_ex(nfile_t file, log_file_flags_t file_flags)
 {
 	NMUTEX_LOCK(log_mutex);
 
@@ -132,7 +132,7 @@ nerror_t log_reg_file_ex(nfile_t file, log_file_flags_t file_flags)
 	return N_OK;
 }
 
-nerror_t log_reg_file(nfile_path_t path)
+nerror_t LOG_API log_reg_file(nfile_path_t path)
 {
 	nfile_t file = nfile_open_w(path);
 	if (file == NULL)
@@ -189,13 +189,13 @@ static void log_paw(log_file_flags_t log_class, const char *format, ...)
 	va_end(list);
 }
 
-bool log_can_out()
+bool LOG_API log_can_out()
 {
 	return log_file_count > 0;
 }
 
-nerror_t log_log_v(color_t color, const char *type, const char *format,
-		   va_list list)
+nerror_t LOG_API log_log_v(color_t color, const char *type, const char *format,
+			   va_list list)
 {
 	NMUTEX_LOCK(log_mutex);
 
@@ -231,7 +231,8 @@ nerror_t log_log_v(color_t color, const char *type, const char *format,
 	return N_OK;
 }
 
-nerror_t log_log(color_t color, const char *type, const char *format, ...)
+nerror_t LOG_API log_log(color_t color, const char *type, const char *format,
+			 ...)
 {
 	va_list list;
 	va_start(list, format);
@@ -244,7 +245,7 @@ nerror_t log_log(color_t color, const char *type, const char *format, ...)
 
 #ifndef log_info
 
-nerror_t log_info(const char *format, ...)
+nerror_t LOG_API log_info(const char *format, ...)
 {
 	va_list list;
 	va_start(list, format);
@@ -259,7 +260,7 @@ nerror_t log_info(const char *format, ...)
 
 #ifndef log_warn
 
-nerror_t log_warn(const char *format, ...)
+nerror_t LOG_API log_warn(const char *format, ...)
 {
 	va_list list;
 	va_start(list, format);
@@ -274,7 +275,7 @@ nerror_t log_warn(const char *format, ...)
 
 #ifndef log_error
 
-nerror_t log_error(const char *format, ...)
+nerror_t LOG_API log_error(const char *format, ...)
 {
 	va_list list;
 	va_start(list, format);

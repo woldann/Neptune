@@ -40,14 +40,6 @@
 
 typedef uint64_t ntime_t; /**< Type representing time values */
 
-/** 
- * @brief External global variable storing the system start time.
- *
- * Typically set during initialization to mark the reference point
- * for elapsed time calculations.
- */
-extern ntime_t ntime_st;
-
 /**
  * @brief Initialize the time subsystem.
  *
@@ -56,7 +48,7 @@ extern ntime_t ntime_st;
  *
  * @return Error code indicating success or failure.
  */
-nerror_t ntime_init(void);
+nerror_t NEPTUNE_API ntime_init(void);
 
 /**
  * @brief Retrieve the current Unix timestamp.
@@ -65,7 +57,7 @@ nerror_t ntime_init(void);
  *
  * @return Current Unix timestamp.
  */
-ntime_t ntime_get_unix(void);
+ntime_t NEPTUNE_API ntime_get_unix(void);
 
 /**
  * @brief Get the elapsed time since the time subsystem was initialized.
@@ -75,7 +67,7 @@ ntime_t ntime_get_unix(void);
  *
  * @return Elapsed time in seconds.
  */
-ntime_t ntime_get_elapsed(void);
+ntime_t NEPTUNE_API ntime_get_elapsed(void);
 
 /**
  * @brief Write the elapsed time as a human-readable string in "HH:MM:SS" format.
@@ -88,6 +80,6 @@ ntime_t ntime_get_elapsed(void);
  *
  * @note The buffer must be exactly 8 bytes to hold the output.
  */
-void ntime_get_elapsed_str(char *str);
+void NEPTUNE_API ntime_get_elapsed_str(char *str);
 
 #endif // !__NTIME_H__

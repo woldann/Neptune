@@ -30,13 +30,13 @@ ntime_t ntime_start;
 #include <time.h>
 #endif /* ifndef MODULE */
 
-nerror_t ntime_init(void)
+nerror_t NEPTUNE_API ntime_init(void)
 {
 	ntime_start = ntime_get_unix();
 	return N_OK;
 }
 
-ntime_t ntime_get_unix(void)
+ntime_t NEPTUNE_API ntime_get_unix(void)
 {
 #ifdef MODULE
 
@@ -52,12 +52,12 @@ ntime_t ntime_get_unix(void)
 #endif /* ifndef MODULE */
 }
 
-ntime_t ntime_get_elapsed(void)
+ntime_t NEPTUNE_API ntime_get_elapsed(void)
 {
 	return ntime_get_unix() - ntime_start;
 }
 
-void ntime_get_elapsed_str(char *str)
+void NEPTUNE_API ntime_get_elapsed_str(char *str)
 {
 	ntime_t sec = ntime_get_elapsed();
 	ntime_t min = sec / 60;

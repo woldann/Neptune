@@ -32,21 +32,21 @@
 
 #ifdef MODULE
 
-void nfile_close(nfile_t nfile)
+void NFILE_API nfile_close(nfile_t nfile)
 {
 	filp_close(nfile, NULL);
 }
 
 #endif /* ifdef MODULE */
 
-void nfile_delete(const nfile_path_t path)
+void NFILE_API nfile_delete(const nfile_path_t path)
 {
 #ifdef __WIN32
 	DeleteFileW(path);
 #endif /* ifdef __WIN32 */
 }
 
-ssize_t nfile_get_length(nfile_t nfile)
+ssize_t NFILE_API nfile_get_length(nfile_t nfile)
 {
 #ifdef MODULE
 
@@ -72,7 +72,7 @@ ssize_t nfile_get_length(nfile_t nfile)
 
 #if !defined(NFILE_DISABLE_READ) || NFILE_DISABLE_READ != 1
 
-nfile_t nfile_open_r(const nfile_path_t pathname)
+nfile_t NFILE_API nfile_open_r(const nfile_path_t pathname)
 {
 #ifdef MODULE
 	return filp_open(pathname, O_RDONLY, 0);
@@ -87,8 +87,8 @@ nfile_t nfile_open_r(const nfile_path_t pathname)
 #endif /* ifndef MODULE */
 }
 
-ssize_t nfile_read_o(nfile_t nfile, ssize_t offset, void *buffer,
-		     ssize_t length)
+ssize_t NFILE_API nfile_read_o(nfile_t nfile, ssize_t offset, void *buffer,
+			       ssize_t length)
 {
 #ifdef MODULE
 	return kernel_read(nfile, buffer, length, (loff_t *)&offset);
@@ -102,7 +102,7 @@ ssize_t nfile_read_o(nfile_t nfile, ssize_t offset, void *buffer,
 #endif /* ifndef MODULE */
 }
 
-ssize_t nfile_read(nfile_t nfile, void *buffer, ssize_t length)
+ssize_t NFILE_API nfile_read(nfile_t nfile, void *buffer, ssize_t length)
 {
 #ifdef MODULE
 	return nfile_read_o(nfile, nfile->f_pos, buffer, length);
@@ -115,7 +115,7 @@ ssize_t nfile_read(nfile_t nfile, void *buffer, ssize_t length)
 
 #if !defined(NFILE_DISABLE_WRITE) || NFILE_DISABLE_WRITE != 1
 
-nfile_t nfile_open_w(const nfile_path_t pathname)
+nfile_t NFILE_API nfile_open_w(const nfile_path_t pathname)
 {
 #ifdef MODULE
 	return filp_open(pathname, O_WRONLY | O_CREAT | O_TRUNC, 0644);
@@ -130,8 +130,8 @@ nfile_t nfile_open_w(const nfile_path_t pathname)
 #endif /* ifndef MODULE */
 }
 
-ssize_t nfile_write_o(nfile_t nfile, ssize_t offset, const void *buffer,
-		      ssize_t length)
+ssize_t NFILE_API nfile_write_o(nfile_t nfile, ssize_t offset,
+				const void *buffer, ssize_t length)
 {
 #ifdef MODULE
 	size_t ret = kernel_write(nfile, buffer, length, (loff_t *)&offset);
@@ -148,7 +148,7 @@ ssize_t nfile_write_o(nfile_t nfile, ssize_t offset, const void *buffer,
 #endif /* ifndef MODULE */
 }
 
-ssize_t nfile_write(nfile_t nfile, const void *buffer, ssize_t length)
+ssize_t NFILE_API nfile_write(nfile_t nfile, const void *buffer, ssize_t length)
 {
 #ifdef MODULE
 	return nfile_write_o(nfile, nfile->f_pos, buffer, length);
@@ -157,8 +157,8 @@ ssize_t nfile_write(nfile_t nfile, const void *buffer, ssize_t length)
 #endif /* infdef MODULE */
 }
 
-ssize_t nfile_printf_ov(nfile_t nfile, ssize_t offset, const char *format,
-			va_list args)
+ssize_t NFILE_API nfile_printf_ov(nfile_t nfile, ssize_t offset,
+				  const char *format, va_list args)
 {
 #ifdef MODULE
 
@@ -177,7 +177,8 @@ ssize_t nfile_printf_ov(nfile_t nfile, ssize_t offset, const char *format,
 #endif /* ifndef MODULE */
 }
 
-ssize_t nfile_printf_o(nfile_t nfile, ssize_t offset, const char *format, ...)
+ssize_t NFILE_API nfile_printf_o(nfile_t nfile, ssize_t offset,
+				 const char *format, ...)
 {
 	va_list args;
 	va_start(args, format);
@@ -197,7 +198,8 @@ ssize_t nfile_printf_o(nfile_t nfile, ssize_t offset, const char *format, ...)
 	return ret;
 }
 
-ssize_t nfile_printf_v(nfile_t nfile, const char *format, va_list args)
+ssize_t NFILE_API nfile_printf_v(nfile_t nfile, const char *format,
+				 va_list args)
 {
 #ifdef MODULE
 	return nfile_printf_ov(nfile, nfile->f_pos, format, args);
@@ -206,7 +208,7 @@ ssize_t nfile_printf_v(nfile_t nfile, const char *format, va_list args)
 #endif /* ifndef MODULE */
 }
 
-ssize_t nfile_printf(nfile_t nfile, const char *format, ...)
+ssize_t NFILE_API nfile_printf(nfile_t nfile, const char *format, ...)
 {
 	va_list args;
 	va_start(args, format);
@@ -225,7 +227,7 @@ ssize_t nfile_printf(nfile_t nfile, const char *format, ...)
 
 #if !defined(NFILE_DISABLE_RDWR) || NFILE_DISABLE_RDWR != 1
 
-nfile_t nfile_open_rw(const nfile_path_t pathname)
+nfile_t NFILE_API nfile_open_rw(const nfile_path_t pathname)
 {
 #ifdef MODULE
 	return filp_open(pathname, O_RDWR, 0);
@@ -240,7 +242,7 @@ nfile_t nfile_open_rw(const nfile_path_t pathname)
 #endif /* ifndef MODULE */
 }
 
-nfile_t nfile_open_wr(const nfile_path_t pathname)
+nfile_t NFILE_API nfile_open_wr(const nfile_path_t pathname)
 {
 #ifdef MODULE
 	return filp_open(pathname, O_RDWR | O_CREAT | O_TRUNC, 0644);

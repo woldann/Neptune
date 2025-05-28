@@ -24,6 +24,7 @@
 
 #include "neptune.h"
 #include "nerror.h"
+#include "ntime.h"
 
 typedef nerror_t (*neptune_init_fn)(void);
 
@@ -64,7 +65,7 @@ neptune_destroy_fn neptune_destroy_funcs[] = {
 #undef NEPTUNE_MODULE_INIT
 #undef NEPTUNE_MODULE_DESTROY
 
-nerror_t neptune_init()
+nerror_t NEPTUNE_API neptune_init()
 {
 	size_t init_func_count =
 		sizeof(neptune_init_funcs) / sizeof(*neptune_init_funcs);
@@ -86,7 +87,7 @@ nerror_t neptune_init()
 	return N_OK;
 }
 
-void neptune_destroy()
+void NEPTUNE_API neptune_destroy()
 {
 	size_t destroy_func_count =
 		sizeof(neptune_destroy_funcs) / sizeof(*neptune_destroy_funcs);

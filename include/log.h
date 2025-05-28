@@ -136,6 +136,10 @@
 #define LOG_CLASS_MSG LOG_FILE_PRINT_MSG
 #define LOG_CLASS_ENDL LOG_FILE_PRINT_ENDL
 
+#ifndef LOG_API
+#define LOG_API NEPTUNE_API
+#endif // !LOG_API
+
 // Bitmask type for specifying logging behavior
 typedef int8_t log_file_flags_t;
 
@@ -151,7 +155,7 @@ typedef struct log_file log_file_t;
  * @brief Set the color for subsequent log messages (if supported).
  * @param color The color to apply to the log output.
  */
-void log_set_color(color_t color);
+void LOG_API log_set_color(color_t color);
 
 /**
  * @brief Register an existing file as a log output target with specific flags.
@@ -159,20 +163,20 @@ void log_set_color(color_t color);
  * @param file_flags Formatting flags.
  * @return Error code.
  */
-nerror_t log_reg_file_ex(nfile_t file, log_file_flags_t file_flags);
+nerror_t LOG_API log_reg_file_ex(nfile_t file, log_file_flags_t file_flags);
 
 /**
  * @brief Register a new log file by path with default flags.
  * @param path Path to the file to be used for logging.
  * @return Error code.
  */
-nerror_t log_reg_file(nfile_path_t path);
+nerror_t LOG_API log_reg_file(nfile_path_t path);
 
 /**
  * @brief Check if logging output is currently enabled.
  * @return true if logging is active, false otherwise.
  */
-bool log_can_out(void);
+bool LOG_API log_can_out(void);
 
 /**
  * @brief Write an informational log message.
@@ -180,7 +184,7 @@ bool log_can_out(void);
  * @param ... Arguments matching the format.
  * @return Error code.
  */
-nerror_t log_info(const char *format, ...);
+nerror_t LOG_API log_info(const char *format, ...);
 
 /**
  * @brief Write a warning log message.
@@ -188,7 +192,7 @@ nerror_t log_info(const char *format, ...);
  * @param ... Arguments matching the format.
  * @return Error code.
  */
-nerror_t log_warn(const char *format, ...);
+nerror_t LOG_API log_warn(const char *format, ...);
 
 /**
  * @brief Write an error log message.
@@ -196,18 +200,18 @@ nerror_t log_warn(const char *format, ...);
  * @param ... Arguments matching the format.
  * @return Error code.
  */
-nerror_t log_error(const char *format, ...);
+nerror_t LOG_API log_error(const char *format, ...);
 
 /**
  * @brief Initialize the logging system.
  * @return Error code.
  */
-nerror_t log_init(void);
+nerror_t LOG_API log_init(void);
 
 /**
  * @brief Clean up and close any log output targets.
  */
-void log_destroy(void);
+void LOG_API log_destroy(void);
 
 /**
  * @brief Core function for writing a formatted log message with a va_list.
@@ -217,8 +221,8 @@ void log_destroy(void);
  * @param list va_list containing arguments.
  * @return Error code.
  */
-nerror_t log_log_v(color_t color, const char *type, const char *format,
-		   va_list list);
+nerror_t LOG_API log_log_v(color_t color, const char *type, const char *format,
+			   va_list list);
 
 /**
  * @brief Write a formatted log message with variable arguments.
@@ -228,7 +232,8 @@ nerror_t log_log_v(color_t color, const char *type, const char *format,
  * @param ... Variable arguments.
  * @return Error code.
  */
-nerror_t log_log(color_t color, const char *type, const char *format, ...);
+nerror_t LOG_API log_log(color_t color, const char *type, const char *format,
+			 ...);
 
 // Convenience macros for simplified logging
 

@@ -60,6 +60,28 @@
 #define NEPTUNE_MODULERULES_HEADER "neptune_rules.h"
 #endif // !NEPTUNE_MODULERULES_HEADER
 
+#ifdef NEPTUNE_API_IMPORT
+
+#ifdef NEPTUNE_API_EXPORT
+#error "NEPTUNE_API_EXPORT and NEPTUNE_API_IMPORT cannot be defined at the same time"
+#endif // NEPTUNE_API_EXPORT
+
+#ifdef __WIN32
+#define NEPTUNE_API __declspec(dllimport)
+#endif // __WIN32
+
+#endif // NEPTUNE_API_IMPORT
+
+#ifdef NEPTUNE_API_EXPORT
+#ifdef __WIN32
+#define NEPTUNE_API __declspec(dllexport)
+#endif // __WIN32
+#endif // NEPTUNE_API_EXPORT
+
+#ifndef NEPTUNE_API
+#define NEPTUNE_API
+#endif // !NEPTUNE_API
+
 #ifdef MODULE
 
 #include <linux/module.h>
