@@ -26,6 +26,10 @@
 
 ntime_t ntime_start;
 
+#ifndef MODULE
+#include <time.h>
+#endif /* ifndef MODULE */
+
 nerror_t ntime_init(void)
 {
 	ntime_start = ntime_get_unix();
@@ -44,11 +48,7 @@ ntime_t ntime_get_unix(void)
 	return (ntime_t)ts.tv_sec;
 
 #else /* ifndef MODULE */
-
-#include <time.h>
-
 	return (ntime_t)time(NULL);
-
 #endif /* ifndef MODULE */
 }
 
