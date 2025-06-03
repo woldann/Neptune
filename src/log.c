@@ -40,10 +40,6 @@ nerror_t LOG_API log_init()
 {
 	NMUTEX_INIT(log_mutex);
 
-	log_files = N_ALLOC(0);
-	if (log_files == NULL)
-		return GET_ERR(LOG_ALLOC_ERROR);
-
 #ifdef LOG_FORCE_COLOR
 #ifdef __WIN32
 

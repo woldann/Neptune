@@ -31,10 +31,10 @@
 
 int main()
 {
-	if (HAS_ERR(neptune_init())) {
-		printf("neptune_init failed\n");
-		return 1;
-	}
+	if (HAS_ERR(neptune_init()))
+		return EXIT_FAILURE;
+
+	LOG_INFO("Neptune initilaized!");
 
 #ifdef LOG_LEVEL_1
 	LOG_INFO("Test Log");
