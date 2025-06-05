@@ -100,7 +100,8 @@ void LOG_API log_set_color(color_t color)
 	if (color == NULL)
 		return;
 
-	for (size_t i = 0; i < log_file_count; i++) {
+	size_t i;
+	for (i = 0; i < log_file_count; i++) {
 		log_file_t *lf = log_files + i;
 		if ((lf->file_flags & LOG_FILE_COLORABLE) != 0)
 			NFILE_WRITE(lf->file, color, strlen(color));
@@ -149,7 +150,8 @@ static void log_paw_v(log_file_flags_t log_class, const char *format,
 	if (format == NULL)
 		format = "(null)";
 
-	for (size_t i = 0; i < log_file_count; i++) {
+	size_t i;
+	for (i = 0; i < log_file_count; i++) {
 		log_file_t *lf = log_files + i;
 
 		va_list args_copy;
