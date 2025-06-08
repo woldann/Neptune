@@ -98,10 +98,10 @@ void NEPTUNE_API neptune_destroy()
 		neptune_destroy_funcs[i]();
 }
 
-#ifdef NEPTUNE_DEFINE_MEMMEM
+#ifdef NEPTUNE_ENABLE_MEMMEM
 
-void *neptune_memmem(register const void *haystack, size_t haystacklen,
-		     const void *needle, size_t needlelen)
+void *memmem_s(register const void *haystack, size_t haystacklen,
+	       const void *needle, size_t needlelen, size_t skip)
 {
 	if (haystacklen < needlelen)
 		return NULL;
@@ -111,10 +111,24 @@ void *neptune_memmem(register const void *haystack, size_t haystacklen,
 		if (memcmp(haystack, needle, needlelen) == 0)
 			return (void *)haystack;
 
-		haystack++;
+		haystack += skip;
 	}
 
 	return NULL;
+}
+
+void *memmem_n(register const void *haystack, size_t haystacklen,
+	       const void *needle, size_t needlelen)
+{
+	return memmem_s(haystack, haystacklen, needle, needlelen, needlelen);
+}
+
+#ifdef NEPTUNE_DEFINE_MEMMEM
+
+void *neptune_memmem(register const void *haystack, size_t haystacklen,
+		     const void *needle, size_t needlelen)
+{
+	return memmem_s(haystack, haystacklen, needle, needlelen, 1);
 }
 
 #endif /* ifdef NEPTUNE_DEFINE_MEMMEM */
@@ -124,7 +138,9 @@ void *neptune_memmem(register const void *haystack, size_t haystacklen,
 void *neptune_memstr(register const void *haystack, const char *needle,
 		     size_t haystacklen)
 {
-	return neptune_memmem(haystack, haystacklen, needle, strlen(needle));
+	return memmem_s(haystack, haystacklen, needle, strlen(needle), 1);
 }
 
 #endif /* ifdef NEPTUNE_DEFINE_MEMSTR */
+
+#endif /* ifdef NEPTUNE_ENABLE_MEMMEM */

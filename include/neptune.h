@@ -179,7 +179,16 @@ nerror_t neptune_init(void);
 * This function releases all resources allocated during initialization and runtime.
 * It should be called once when the application is finished using the Neptune library.
 */
+
 void neptune_destroy(void);
+
+#ifdef NEPTUNE_ENABLE_MEMMEM
+
+void *memmem_s(register const void *haystack, size_t haystacklen,
+	       const void *needle, size_t needlelen, size_t skip);
+
+void *memmem_n(register const void *haystack, size_t haystacklen,
+	       const void *needle, size_t needlelen);
 
 #ifndef memmem
 
@@ -204,5 +213,7 @@ void *neptune_memstr(const void *haystack, const char *needle,
 	neptune_memstr(haystack, needle, needlelen)
 
 #endif /* !memstr */
+
+#endif // NEPTUNE_ENABLE_MEMMEM
 
 #endif // !__NEPTUNE_H__
