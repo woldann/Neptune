@@ -60,6 +60,14 @@
 #define NEPTUNE_MODULERULES_HEADER "neptune_rules.h"
 #endif // !NEPTUNE_MODULERULES_HEADER
 
+#ifndef API_EXPORT
+#define API_EXPORT __declspec(dllexport)
+#endif // !API_EXPORT
+
+#ifndef API_IMPORT
+#define API_IMPORT __declspec(dllimport)
+#endif // !API_IMPORT
+
 #ifdef NEPTUNE_API_IMPORT
 
 #ifdef NEPTUNE_API_EXPORT
@@ -67,14 +75,14 @@
 #endif // NEPTUNE_API_EXPORT
 
 #ifdef __WIN32
-#define NEPTUNE_API __declspec(dllimport)
+#define NEPTUNE_API API_IMPORT
 #endif // __WIN32
 
 #endif // NEPTUNE_API_IMPORT
 
 #ifdef NEPTUNE_API_EXPORT
 #ifdef __WIN32
-#define NEPTUNE_API __declspec(dllexport)
+#define NEPTUNE_API API_EXPORT
 #endif // __WIN32
 #endif // NEPTUNE_API_EXPORT
 
