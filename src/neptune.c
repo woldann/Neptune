@@ -65,7 +65,7 @@ neptune_destroy_fn neptune_destroy_funcs[] = {
 #undef NEPTUNE_MODULE_INIT
 #undef NEPTUNE_MODULE_DESTROY
 
-NEPTUNE_API nerror_t neptune_init()
+nerror_t neptune_init(void)
 {
 	size_t init_func_count =
 		sizeof(neptune_init_funcs) / sizeof(*neptune_init_funcs);
@@ -83,7 +83,7 @@ NEPTUNE_API nerror_t neptune_init()
 	return N_OK;
 }
 
-NEPTUNE_API void neptune_destroy()
+void neptune_destroy()
 {
 	size_t destroy_func_count =
 		sizeof(neptune_destroy_funcs) / sizeof(*neptune_destroy_funcs);
@@ -101,12 +101,12 @@ void *memmem_s(const void *haystack, size_t haystacklen, const void *needle,
 	if (haystacklen < needlelen)
 		return NULL;
 
-	const void *end = haystack + haystacklen - needlelen;
+	const void *end = (const void *)((const int8_t *)haystack + haystacklen - needlelen);
 	while (haystack <= end) {
 		if (memcmp(haystack, needle, needlelen) == 0)
 			return (void *)haystack;
 
-		haystack += skip;
+		haystack = (void*)(((int8_t*)haystack) + skip);
 	}
 
 	return NULL;

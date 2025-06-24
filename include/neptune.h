@@ -142,8 +142,9 @@ typedef SSIZE_T ssize_t;
 
 #include "nerror.h"
 
-#define NEPTUNE_GET_ARG_COUNT(...) \
-	NEPTUNE_GET_ARG_COUNT_HELPER(__VA_ARGS__, NEPTUNE_COUNTDOWN_63_TO_0())
+#define NEPTUNE_GET_ARG_COUNT_EXPANDER(args) NEPTUNE_GET_64TH_ARG args
+#define NEPTUNE_GET_ARG_COUNT(...) NEPTUNE_GET_ARG_COUNT_EXPANDER((__VA_ARGS__, NEPTUNE_COUNTDOWN_63_TO_0()))
+
 #define NEPTUNE_GET_ARG_COUNT_HELPER(...) NEPTUNE_GET_64TH_ARG(__VA_ARGS__)
 #define NEPTUNE_GET_64TH_ARG(_1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11,     \
 			     _12, _13, _14, _15, _16, _17, _18, _19, _20, _21, \
@@ -151,8 +152,7 @@ typedef SSIZE_T ssize_t;
 			     _32, _33, _34, _35, _36, _37, _38, _39, _40, _41, \
 			     _42, _43, _44, _45, _46, _47, _48, _49, _50, _51, \
 			     _52, _53, _54, _55, _56, _57, _58, _59, _60, _61, \
-			     _62, _63, N, ...)                                 \
-	N
+			     _62, _63, N, ...) N
 #define NEPTUNE_COUNTDOWN_63_TO_0()                                         \
 	63, 62, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 47, \
 		46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 34, 33, 32, \
