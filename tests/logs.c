@@ -76,7 +76,8 @@ int main()
 		return 4;
 	}
 
-	fseek(file, (long)-sizeof(testlog_msg), SEEK_END);
+	long offset = (long)(sizeof(testlog_msg) * (-1));
+	fseek(file, offset, SEEK_END);
 
 	char buffer[sizeof(testlog_msg)];
 	fread(buffer, 1, sizeof(testlog_msg), file);

@@ -58,11 +58,11 @@ ssize_t NFILE_API nfile_get_length(nfile_t nfile)
 
 #else /* ifndef MODULE */
 
-	size_t cur_pos = ftell(nfile);
+	long cur_pos = ftell(nfile);
 	if (fseek(nfile, 0, SEEK_END) != 0)
 		return 0;
 
-	size_t ret = ftell(nfile);
+	long ret = ftell(nfile);
 	fseek(nfile, cur_pos, SEEK_SET);
 
 	return ret;
@@ -94,7 +94,7 @@ ssize_t NFILE_API nfile_read_o(nfile_t nfile, ssize_t offset, void *buffer,
 	return kernel_read(nfile, buffer, length, (loff_t *)&offset);
 #else /* ifndef MODULE */
 
-	if (fseek(nfile, offset, SEEK_SET) == 0)
+	if (fseek(nfile, (long)offset, SEEK_SET) == 0)
 		return 0;
 
 	return fread(buffer, 1, length, nfile);
@@ -140,7 +140,7 @@ ssize_t NFILE_API nfile_write_o(nfile_t nfile, ssize_t offset,
 	return ret;
 #else /* ifndef MODULE */
 
-	if (fseek(nfile, offset, SEEK_SET) != 0)
+	if (fseek(nfile, (long)offset, SEEK_SET) != 0)
 		return 0;
 
 	return fwrite(buffer, 1, length, nfile);
@@ -169,7 +169,7 @@ ssize_t NFILE_API nfile_printf_ov(nfile_t nfile, ssize_t offset,
 
 #else /* ifndef MODULE */
 
-	if (fseek(nfile, offset, SEEK_SET) != 0)
+	if (fseek(nfile, (long)offset, SEEK_SET) != 0)
 		return 0;
 
 	return vfprintf(nfile, format, args);
@@ -187,7 +187,7 @@ ssize_t NFILE_API nfile_printf_o(nfile_t nfile, ssize_t offset,
 	ssize_t ret = nfile_printf_ov(nfile, offset, format, args);
 #else /* ifndef MODULE */
 
-	if (fseek(nfile, offset, SEEK_SET) != 0)
+	if (fseek(nfile, (long)offset, SEEK_SET) != 0)
 		return 0;
 
 	ssize_t ret = vfprintf(nfile, format, args);

@@ -73,17 +73,11 @@ nerror_t NEPTUNE_API neptune_init()
 	size_t i;
 	for (i = 0; i < init_func_count; i++) {
 		if (HAS_ERR(neptune_init_funcs[i]())) {
-			nerror_t error = GET_ERR(NEPTUNE_INIT_ERROR + i);
+			nerror_t error = GET_ERR(NEPTUNE_INIT_ERROR + (nerror_t)i);
 			neptune_destroy();
 			return error;
 		}
 	}
-
-#ifdef MODULE
-
-#else /* ifndef MODULE */
-	srand(ntime_get_unix());
-#endif /* ifndef MODULE */
 
 	return N_OK;
 }

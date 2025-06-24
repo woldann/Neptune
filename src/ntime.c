@@ -67,12 +67,12 @@ void NEPTUNE_API ntime_get_elapsed_str(char *str)
 	min %= 60;
 	hour %= 24;
 
-	str[0] = '0' + hour / 10;
-	str[1] = '0' + hour % 10;
+	str[0] = '0' + (char) (hour / 10);
+	str[1] = '0' + (char) (hour % 10);
 	str[2] = ':';
-	str[3] = '0' + min / 10;
-	str[4] = '0' + min % 10;
+	str[3] = '0' + (char) (min / 10);
+	str[4] = '0' + (char) (min % 10);
 	str[5] = ':';
-	str[6] = '0' + sec / 10;
-	str[7] = '0' + sec % 10;
+	str[6] = '0' + (char) (sec / 10);
+	str[7] = '0' + (char) (sec % 10);
 }
