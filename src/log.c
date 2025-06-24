@@ -41,7 +41,7 @@ nerror_t LOG_API log_init()
 	NMUTEX_INIT(log_mutex);
 
 #ifdef LOG_FORCE_COLOR
-#ifdef __WIN32
+#ifdef _WIN32
 
 	HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
 	if (console) {
@@ -51,7 +51,7 @@ nerror_t LOG_API log_init()
 			       mode | ENABLE_VIRTUAL_TERMINAL_PROCESSING);
 	}
 
-#endif /* ifdef __WIN32 */
+#endif /* ifdef _WIN32 */
 #endif /* ifdef LOG_FORCE_COLOR */
 
 #ifdef LOG_ON_STDOUT
@@ -211,11 +211,11 @@ nerror_t LOG_API log_log_v(color_t color, const char *type, const char *format,
 
 #else /* ifndef MODULE */
 
-#ifdef __WIN32
+#ifdef _WIN32
 	DWORD tid = GetCurrentThreadId();
-#else /* ifndef __WIN32 */
+#else /* ifndef _WIN32 */
 	pthread_t tid = pthread_self();
-#endif /* ifndef __WIN32 */
+#endif /* ifndef _WIN32 */
 
 	log_paw(LOG_CLASS_TIME, "[%.8s]", time);
 	log_paw(LOG_CLASS_TIME | LOG_CLASS_TYPE, " ");

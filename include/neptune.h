@@ -74,16 +74,16 @@
 #error "NEPTUNE_API_EXPORT and NEPTUNE_API_IMPORT cannot be defined at the same time"
 #endif // NEPTUNE_API_EXPORT
 
-#ifdef __WIN32
+#ifdef _WIN32
 #define NEPTUNE_API API_IMPORT
-#endif // __WIN32
+#endif // _WIN32
 
 #endif // NEPTUNE_API_IMPORT
 
 #ifdef NEPTUNE_API_EXPORT
-#ifdef __WIN32
+#ifdef _WIN32
 #define NEPTUNE_API API_EXPORT
-#endif // __WIN32
+#endif // _WIN32
 #endif // NEPTUNE_API_EXPORT
 
 #ifndef NEPTUNE_API
@@ -114,11 +114,11 @@ MODULE_DESCRIPTION(DESCRIPTION);
 #include <string.h>
 #include <wchar.h>
 
-#ifdef __WIN32
+#ifdef _WIN32
 #include <windows.h>
-#else // !__WIN32
+#else // !_WIN32
 #include <pthread.h>
-#endif // !__WIN32
+#endif // !_WIN32
 
 #endif // !MODULE
 
@@ -127,11 +127,11 @@ MODULE_DESCRIPTION(DESCRIPTION);
 #define LOG_FILE_PATH "/var/log/neptune.log"
 #else // !MODULE
 
-#ifdef __WIN32
+#ifdef _WIN32
 // #define LOG_FILE_PATH L"neptune.log"
-#else // !__WIN32
+#else // !_WIN32
 #define LOG_FILE_PATH "neptune.log"
-#endif // !__WIN32
+#endif // !_WIN32
 
 #endif // !MODULE
 #endif // !LOG_FILE_PATH

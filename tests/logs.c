@@ -41,12 +41,12 @@ int main()
 
 	char testlog_file[] = "testneptune.log";
 
-#ifdef __WIN32
+#ifdef _WIN32
 	wchar_t testlog_file_u[] = L"testneptune.log";
 	void *reg_log_file_addr = testlog_file_u;
-#else /* ifndef __WIN32 */
+#else /* ifndef _WIN32 */
 	void *reg_log_file_addr = testlog_file;
-#endif /* ifndef __WIN32 */
+#endif /* ifndef _WIN32 */
 
 	char testlog_msg[] = "neptune_reigster_log_file check!";
 

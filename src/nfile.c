@@ -41,9 +41,9 @@ void NFILE_API nfile_close(nfile_t nfile)
 
 void NFILE_API nfile_delete(const nfile_path_t path)
 {
-#ifdef __WIN32
+#ifdef _WIN32
 	DeleteFileW(path);
-#endif /* ifdef __WIN32 */
+#endif /* ifdef _WIN32 */
 }
 
 ssize_t NFILE_API nfile_get_length(nfile_t nfile)
@@ -78,11 +78,11 @@ nfile_t NFILE_API nfile_open_r(const nfile_path_t pathname)
 	return filp_open(pathname, O_RDONLY, 0);
 #else /* ifndef MODULE */
 
-#ifdef __WIN32
+#ifdef _WIN32
 	return _wfopen(pathname, L"rb");
-#else /* ifndef __WIN32 */
+#else /* ifndef _WIN32 */
 	return fopen(pathname, "rb");
-#endif /* ifndef __WIN32 */
+#endif /* ifndef _WIN32 */
 
 #endif /* ifndef MODULE */
 }
@@ -121,11 +121,11 @@ nfile_t NFILE_API nfile_open_w(const nfile_path_t pathname)
 	return filp_open(pathname, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 #else /* ifndef MODULE */
 
-#ifdef __WIN32
+#ifdef _WIN32
 	return _wfopen(pathname, L"wb");
-#else /* ifndef __WIN32 */
+#else /* ifndef _WIN32 */
 	return fopen(pathname, "wb");
-#endif /* ifndef __WIN32 */
+#endif /* ifndef _WIN32 */
 
 #endif /* ifndef MODULE */
 }
@@ -233,11 +233,11 @@ nfile_t NFILE_API nfile_open_rw(const nfile_path_t pathname)
 	return filp_open(pathname, O_RDWR, 0);
 #else /* ifndef MODULE */
 
-#ifdef __WIN32
+#ifdef _WIN32
 	return _wfopen(pathname, L"r+b");
-#else /* ifndef __WIN32 */
+#else /* ifndef _WIN32 */
 	return fopen(pathname, "rb");
-#endif /* ifndef __WIN32 */
+#endif /* ifndef _WIN32 */
 
 #endif /* ifndef MODULE */
 }
@@ -248,11 +248,11 @@ nfile_t NFILE_API nfile_open_wr(const nfile_path_t pathname)
 	return filp_open(pathname, O_RDWR | O_CREAT | O_TRUNC, 0644);
 #else /* ifndef MODULE */
 
-#ifdef __WIN32
+#ifdef _WIN32
 	return _wfopen(pathname, L"w+b");
-#else /* ifndef __WIN32 */
+#else /* ifndef _WIN32 */
 	return fopen(pathname, "w+b");
-#endif /* ifndef __WIN32 */
+#endif /* ifndef _WIN32 */
 
 #endif /* ifndef MODULE */
 }

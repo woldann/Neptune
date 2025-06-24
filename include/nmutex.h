@@ -50,7 +50,7 @@
 
 #else // !MODULE
 
-#ifdef __WIN32
+#ifdef _WIN32
 
 #define NMUTEX HANDLE
 
@@ -63,7 +63,7 @@ void NEPTUNE_API nmutex_lock(HANDLE nmutex);
 #define NMUTEX_UNLOCK(nmutex) ReleaseMutex(nmutex)
 #define NMUTEX_DESTROY(nmutex) CloseHandle(nmutex)
 
-#else // !__WIN32
+#else // !_WIN32
 
 #define NMUTEX pthread_mutex_t
 
@@ -74,6 +74,6 @@ void NEPTUNE_API nmutex_init(pthread_mutex_t *mutex);
 #define NMUTEX_UNLOCK(nmutex) pthread_mutex_unlock(&nmutex)
 #define NMUTEX_DESTROY(nmutex) pthread_mutex_destroy(&nmutex)
 
-#endif // !__WIN32
+#endif // !_WIN32
 #endif // !MODULE
 #endif // !__MUTEX_H__

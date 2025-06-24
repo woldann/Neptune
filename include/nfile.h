@@ -63,16 +63,16 @@ typedef FILE *nfile_t;
 
 #endif // !MODULE
 
-#ifdef __WIN32
+#ifdef _WIN32
 
 typedef wchar_t nfile_char_t;
 #define NFILE_MAX_PATH_LENGTH MAX_PATH
 
-#else // !__WIN32
+#else // !_WIN32
 
 typedef char nfile_char_t;
 
-#endif // __WIN32
+#endif // _WIN32
 
 typedef nfile_char_t *nfile_path_t;
 
@@ -82,11 +82,11 @@ typedef nfile_char_t *nfile_path_t;
 #define NFILE_API NEPTUNE_API
 #endif // !NFILE_API
 
-#ifdef __WIN32
+#ifdef _WIN32
 #define NFILE_PATH_GET_LENGTH(nfile_path) ((size_t)wcslen(nfile_path))
-#else // !__WIN32
+#else // !_WIN32
 #define NFILE_PATH_GET_LENGTH(nfile_path) ((size_t)strlen(nfile_path))
-#endif // !__WIN32
+#endif // !_WIN32
 
 #define NFILE_PATH_CALC_SIZE(length) ((length + 1) * sizeof(nfile_char_t))
 #define NFILE_PATH_GET_SIZE(nfile_path) \

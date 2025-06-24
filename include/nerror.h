@@ -68,9 +68,9 @@
 
 // Full error mode using error codes
 
-#if !defined(__WIN32) && !defined(MODULE)
+#if !defined(_WIN32) && !defined(MODULE)
 #include <bits/types/error_t.h> // Use standard error type if available
-#endif // !defined(__WIN32) && !defined(MODULE)
+#endif // !defined(_WIN32) && !defined(MODULE)
 
 #ifdef error_t
 typedef error_t nerror_t;

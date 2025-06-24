@@ -89,7 +89,7 @@
 #define LOG_FILE_COLORABLE 0x80
 
 #ifndef LOG_SFILE_MASK
-#ifdef __WIN32
+#ifdef _WIN32
 
 #define LOG_TEMP_SFILE_MASK                                               \
 	(LOG_FILE_PRINT_TIME | LOG_FILE_PRINT_TYPE | LOG_FILE_PRINT_MSG | \
@@ -101,13 +101,13 @@
 #define LOG_SFILE_MASK LOG_TEMP_SFILE_MASK
 #endif // !LOG_FORCE_COLOR
 
-#else // !__WIN32
+#else // !_WIN32
 
 #define LOG_SFILE_MASK                                                    \
 	(LOG_FILE_PRINT_TIME | LOG_FILE_PRINT_TYPE | LOG_FILE_PRINT_MSG | \
 	 LOG_FILE_PRINT_ENDL | LOG_FILE_DONT_CLOSE | LOG_FILE_COLORABLE)
 
-#endif // !__WIN32
+#endif // !_WIN32
 
 #endif // !LOG_SFILE_MASK
 
