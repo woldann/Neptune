@@ -85,7 +85,7 @@ typedef int nerror_t;
 /**
  * @brief Create an nerror_t from a given error value.
  */
-nerror_t NEPTUNE_API nerror_create(nerror_t error);
+NEPTUNE_API nerror_t nerror_create(nerror_t error);
 
 #define HAS_ERROR(error) (error != N_OK)
 #define GET_ERROR(error) nerror_create(error)

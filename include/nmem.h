@@ -43,9 +43,9 @@
 
 #ifdef MODULE
 
-void *NEPTUNE_API nmem_alloc(size_t size);
+NEPTUNE_API void *nmem_alloc(size_t size);
 
-void *NEPTUNE_API nmem_realloc(void *ptr, size_t size);
+NEPTUNE_API void *nmem_realloc(void *ptr, size_t size);
 
 #define N_ALLOC(size) nmem_alloc(size)
 #define N_REALLOC(addr, new_size) nmem_realloc(addr, new_size)

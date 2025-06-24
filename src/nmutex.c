@@ -28,19 +28,19 @@
 
 #ifdef _WIN32
 
-HANDLE NEPTUNE_API nmutex_init()
+NEPTUNE_API HANDLE nmutex_init()
 {
 	return CreateMutex(NULL, FALSE, NULL);
 }
 
-void NEPTUNE_API nmutex_lock(HANDLE nmutex)
+NEPTUNE_API void nmutex_lock(HANDLE nmutex)
 {
 	WaitForSingleObject(nmutex, INFINITE);
 }
 
 #else /* ifndef _WIN32 */
 
-void NEPTUNE_API nmutex_init(pthread_mutex_t *mutex)
+NEPTUNE_API void nmutex_init(pthread_mutex_t *mutex)
 {
 	pthread_mutex_init(mutex, NULL);
 }

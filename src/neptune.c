@@ -65,7 +65,7 @@ neptune_destroy_fn neptune_destroy_funcs[] = {
 #undef NEPTUNE_MODULE_INIT
 #undef NEPTUNE_MODULE_DESTROY
 
-nerror_t NEPTUNE_API neptune_init()
+NEPTUNE_API nerror_t neptune_init()
 {
 	size_t init_func_count =
 		sizeof(neptune_init_funcs) / sizeof(*neptune_init_funcs);
@@ -73,7 +73,8 @@ nerror_t NEPTUNE_API neptune_init()
 	size_t i;
 	for (i = 0; i < init_func_count; i++) {
 		if (HAS_ERR(neptune_init_funcs[i]())) {
-			nerror_t error = GET_ERR(NEPTUNE_INIT_ERROR + (nerror_t)i);
+			nerror_t error =
+				GET_ERR(NEPTUNE_INIT_ERROR + (nerror_t)i);
 			neptune_destroy();
 			return error;
 		}
@@ -82,7 +83,7 @@ nerror_t NEPTUNE_API neptune_init()
 	return N_OK;
 }
 
-void NEPTUNE_API neptune_destroy()
+NEPTUNE_API void neptune_destroy()
 {
 	size_t destroy_func_count =
 		sizeof(neptune_destroy_funcs) / sizeof(*neptune_destroy_funcs);

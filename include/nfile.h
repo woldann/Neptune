@@ -127,12 +127,12 @@ typedef nfile_char_t *nfile_path_t;
 
 #if !defined(NFILE_DISABLE_READ) || NFILE_DISABLE_READ != 1
 
-nfile_t NFILE_API nfile_open_r(const nfile_path_t pathname);
+NFILE_API nfile_t nfile_open_r(const nfile_path_t pathname);
 
-ssize_t NFILE_API nfile_read_o(nfile_t nfile, ssize_t offset, void *buffer,
+NFILE_API ssize_t nfile_read_o(nfile_t nfile, ssize_t offset, void *buffer,
 			       ssize_t length);
 
-ssize_t NFILE_API nfile_read(nfile_t nfile, void *buffer, ssize_t length);
+NFILE_API ssize_t nfile_read(nfile_t nfile, void *buffer, ssize_t length);
 
 #define NFILE_OPEN_R(pathname) nfile_open_r(pathname)
 
@@ -145,24 +145,24 @@ ssize_t NFILE_API nfile_read(nfile_t nfile, void *buffer, ssize_t length);
 
 #if !defined(NFILE_DISABLE_WRITE) || NFILE_DISABLE_WRITE != 1
 
-nfile_t NFILE_API nfile_open_w(const nfile_path_t pathname);
+NFILE_API nfile_t nfile_open_w(const nfile_path_t pathname);
 
-ssize_t NFILE_API nfile_write_o(nfile_t nfile, ssize_t offset,
+NFILE_API ssize_t nfile_write_o(nfile_t nfile, ssize_t offset,
 				const void *buffer, ssize_t length);
 
-ssize_t NFILE_API nfile_write(nfile_t nfile, const void *buffer,
+NFILE_API ssize_t nfile_write(nfile_t nfile, const void *buffer,
 			      ssize_t length);
 
-ssize_t NFILE_API nfile_printf_ov(nfile_t nfile, ssize_t offset,
+NFILE_API ssize_t nfile_printf_ov(nfile_t nfile, ssize_t offset,
 				  const char *format, va_list args);
 
-ssize_t NFILE_API nfile_printf_o(nfile_t nfile, ssize_t offset,
+NFILE_API ssize_t nfile_printf_o(nfile_t nfile, ssize_t offset,
 				 const char *format, ...);
 
-ssize_t NFILE_API nfile_printf_v(nfile_t nfile, const char *format,
+NFILE_API ssize_t nfile_printf_v(nfile_t nfile, const char *format,
 				 va_list args);
 
-ssize_t NFILE_API nfile_printf(nfile_t nfile, const char *format, ...);
+NFILE_API ssize_t nfile_printf(nfile_t nfile, const char *format, ...);
 
 #define NFILE_OPEN_W(pathname) nfile_open_w(pathname)
 
@@ -199,17 +199,17 @@ ssize_t NFILE_API nfile_printf(nfile_t nfile, const char *format, ...);
 
 #if !defined(NFILE_DISABLE_RDWR) || NFILE_DISABLE_RDWR != 1
 
-nfile_t NFILE_API nfile_open_rw(const nfile_path_t pathname);
+NFILE_API nfile_t nfile_open_rw(const nfile_path_t pathname);
 
-nfile_t NFILE_API nfile_open_wr(const nfile_path_t pathname);
+NFILE_API nfile_t nfile_open_wr(const nfile_path_t pathname);
 
 #endif // !defined(NFILE_DISABLE_RDWR) || NFILE_DISABLE_RDWR != 1
 
-void NFILE_API nfile_delete(const nfile_path_t path);
+NFILE_API void nfile_delete(const nfile_path_t path);
 
 #define NFILE_DELETE(nfile) nfile_delete(nfile)
 
-ssize_t NFILE_API nfile_get_length(nfile_t nfile);
+NFILE_API ssize_t nfile_get_length(nfile_t nfile);
 
 #define NFILE_GET_LENGTH(nfile) nfile_get_length(nfile)
 

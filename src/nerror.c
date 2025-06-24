@@ -26,7 +26,7 @@
 
 #if NERROR_LEVEL == 1
 
-nerror_t NEPTUNE_API nerror_create(nerror_t error)
+NEPTUNE_API nerror_t nerror_create(nerror_t error)
 {
 	if (error == N_OK)
 		return N_OK;

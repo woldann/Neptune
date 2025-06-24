@@ -48,7 +48,7 @@ typedef uint64_t ntime_t; /**< Type representing time values */
  *
  * @return Error code indicating success or failure.
  */
-nerror_t NEPTUNE_API ntime_init(void);
+NEPTUNE_API nerror_t ntime_init(void);
 
 /**
  * @brief Retrieve the current Unix timestamp.
@@ -57,7 +57,7 @@ nerror_t NEPTUNE_API ntime_init(void);
  *
  * @return Current Unix timestamp.
  */
-ntime_t NEPTUNE_API ntime_get_unix(void);
+NEPTUNE_API ntime_t ntime_get_unix(void);
 
 /**
  * @brief Get the elapsed time since the time subsystem was initialized.
@@ -67,7 +67,7 @@ ntime_t NEPTUNE_API ntime_get_unix(void);
  *
  * @return Elapsed time in seconds.
  */
-ntime_t NEPTUNE_API ntime_get_elapsed(void);
+NEPTUNE_API ntime_t ntime_get_elapsed(void);
 
 /**
  * @brief Write the elapsed time as a human-readable string in "HH:MM:SS" format.
@@ -80,6 +80,6 @@ ntime_t NEPTUNE_API ntime_get_elapsed(void);
  *
  * @note The buffer must be exactly 8 bytes to hold the output.
  */
-void NEPTUNE_API ntime_get_elapsed_str(char *str);
+NEPTUNE_API void ntime_get_elapsed_str(char *str);
 
 #endif // !__NTIME_H__

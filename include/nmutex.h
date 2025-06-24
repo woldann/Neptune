@@ -54,9 +54,9 @@
 
 #define NMUTEX HANDLE
 
-HANDLE NEPTUNE_API nmutex_init();
+NEPTUNE_API HANDLE nmutex_init();
 
-void NEPTUNE_API nmutex_lock(HANDLE nmutex);
+NEPTUNE_API void nmutex_lock(HANDLE nmutex);
 
 #define NMUTEX_INIT(nmutex) (nmutex = nmutex_init())
 #define NMUTEX_LOCK(nmutex) nmutex_lock(nmutex)
@@ -67,7 +67,7 @@ void NEPTUNE_API nmutex_lock(HANDLE nmutex);
 
 #define NMUTEX pthread_mutex_t
 
-void NEPTUNE_API nmutex_init(pthread_mutex_t *mutex);
+NEPTUNE_API void nmutex_init(pthread_mutex_t *mutex);
 
 #define NMUTEX_INIT(nmutex) nmutex_init(&nmutex)
 #define NMUTEX_LOCK(nmutex) pthread_mutex_lock(&nmutex)

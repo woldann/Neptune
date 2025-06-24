@@ -26,12 +26,12 @@
 
 #ifdef MODULE
 
-void *NEPTUNE_API nmem_alloc(size_t size)
+NEPTUNE_API void *nmem_alloc(size_t size)
 {
 	return kmalloc(size, GFP_KERNEL);
 }
 
-void *NEPTUNE_API nmem_realloc(void *ptr, size_t size)
+NEPTUNE_API void *nmem_realloc(void *ptr, size_t size)
 {
 	return krealloc(ptr, size, GFP_KERNEL);
 }

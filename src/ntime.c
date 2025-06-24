@@ -30,13 +30,13 @@ ntime_t ntime_start;
 #include <time.h>
 #endif /* ifndef MODULE */
 
-nerror_t NEPTUNE_API ntime_init(void)
+NEPTUNE_API nerror_t ntime_init(void)
 {
 	ntime_start = ntime_get_unix();
 	return N_OK;
 }
 
-ntime_t NEPTUNE_API ntime_get_unix(void)
+NEPTUNE_API ntime_t ntime_get_unix(void)
 {
 #ifdef MODULE
 
@@ -52,12 +52,12 @@ ntime_t NEPTUNE_API ntime_get_unix(void)
 #endif /* ifndef MODULE */
 }
 
-ntime_t NEPTUNE_API ntime_get_elapsed(void)
+NEPTUNE_API ntime_t ntime_get_elapsed(void)
 {
 	return ntime_get_unix() - ntime_start;
 }
 
-void NEPTUNE_API ntime_get_elapsed_str(char *str)
+NEPTUNE_API void ntime_get_elapsed_str(char *str)
 {
 	ntime_t sec = ntime_get_elapsed();
 	ntime_t min = sec / 60;
@@ -67,12 +67,12 @@ void NEPTUNE_API ntime_get_elapsed_str(char *str)
 	min %= 60;
 	hour %= 24;
 
-	str[0] = '0' + (char) (hour / 10);
-	str[1] = '0' + (char) (hour % 10);
+	str[0] = '0' + (char)(hour / 10);
+	str[1] = '0' + (char)(hour % 10);
 	str[2] = ':';
-	str[3] = '0' + (char) (min / 10);
-	str[4] = '0' + (char) (min % 10);
+	str[3] = '0' + (char)(min / 10);
+	str[4] = '0' + (char)(min % 10);
 	str[5] = ':';
-	str[6] = '0' + (char) (sec / 10);
-	str[7] = '0' + (char) (sec % 10);
+	str[6] = '0' + (char)(sec / 10);
+	str[7] = '0' + (char)(sec % 10);
 }
