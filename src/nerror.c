@@ -23,6 +23,7 @@
  */
 
 #include "nerror.h"
+#include "log.h" // Logging integration (optional for debug or error reporting)
 
 #if NERROR_LEVEL == 1
 

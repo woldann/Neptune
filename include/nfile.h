@@ -22,26 +22,12 @@
  * SOFTWARE.
  */
 
-/*
- * Copyright (C) 2024, 2025 Serkan Aksoy
- * All rights reserved.
- *
- * This file is part of the Neptune project.
- * It may not be copied or distributed without permission.
- */
-
 #ifndef __NFILE_H__
 #define __NFILE_H__
 
+#include "nfile_defs.h"
+
 #ifdef MODULE
-
-#include <linux/types.h>
-#include <linux/fs.h>
-
-#define NFILE_MAX_PRINTF_LENGTH 256
-#define NFILE_MAX_PATH_LENGTH 256
-
-typedef struct file *nfile_t;
 
 #define NFILE_FLUSH(nfile) \
 	do {               \
@@ -53,28 +39,10 @@ void nfile_close(nfile_t nfile);
 
 #else // !MODULE
 
-#include <stdio.h>
-#include <wchar.h>
-
-typedef FILE *nfile_t;
-
 #define NFILE_FLUSH(nfile) fflush(nfile)
 #define NFILE_CLOSE(nfile) fclose(nfile)
 
 #endif // !MODULE
-
-#ifdef _WIN32
-
-typedef wchar_t nfile_char_t;
-#define NFILE_MAX_PATH_LENGTH MAX_PATH
-
-#else // !_WIN32
-
-typedef char nfile_char_t;
-
-#endif // _WIN32
-
-typedef nfile_char_t *nfile_path_t;
 
 #include "neptune.h"
 
@@ -93,37 +61,7 @@ typedef nfile_char_t *nfile_path_t;
 	(NFILE_PATH_CALC_SIZE(NFILE_PATH_GET_LENGTH(nfile_path)))
 #define NFILE_MAX_PATH_SIZE (NFILE_PATH_CALC_SIZE(NFILE_MAX_PATH_LENGTH))
 
-#if defined(NFILE_DISABLE_READ) && defined(NFILE_DISABLE_WRITE)
-#if NFILE_DISABLE_READ == 1 && NFILE_DISABLE_WRITE == 1
-
-#ifdef NFILE_DISABLE
-#undef NFILE_DISABLE
-#endif // NFILE_DISABLE
-
-#define NFILE_DISABLE 1
-
-#endif // NFILE_DISABLE_READ == 1 && NFILE_DISABLE_WRITE == 1
-#endif // defined(NFILE_DISABLE_READ) && defined(NFILE_DISABLE_WRITE)
-
-#if defined(NFILE_DISABLE) && NFILE_DISABLE == 1
-
-#ifdef NFILE_DISABLE_READ
-#undef NFILE_DISABLE_READ
-#endif // NFILE_DISABLE_READ
-
-#ifdef NFILE_DISABLE_WRITE
-#undef NFILE_DISABLE_WRITE
-#endif // NFILE_DISABLE_WRITE
-
-#ifdef NFILE_DISABLE_RDWR
-#undef NFILE_DISABLE_RDWR
-#endif // NFILE_DISABLE_RDWR
-
-#define NFILE_DISABLE_READ 1
-#define NFILE_DISABLE_WRITE 1
-#define NFILE_DISABLE_RDWR 1
-
-#else // !defined(NFILE_DISABLE) || NFILE_DISABLE != 1
+#if !defined(NFILE_DISABLE) || NFILE_DISABLE != 1
 
 #if !defined(NFILE_DISABLE_READ) || NFILE_DISABLE_READ != 1
 
@@ -185,19 +123,6 @@ NFILE_API ssize_t nfile_printf(nfile_t nfile, const char *format, ...);
 #endif // !defined(NFILE_DISABLE_WRITE) || NFILE_DISABLE_WRITE != 1
 
 #if !defined(NFILE_DISABLE_RDWR) || NFILE_DISABLE_RDWR != 1
-#if (defined(NFILE_DISABLE_READ) && NFILE_DISABLE_READ == 1) || \
-	(defined(NFILE_DISABLE_WRITE) && NFILE_DISABLE_WRITE == 1)
-
-#ifdef NFILE_DISABLE_RDWR
-#undef NFILE_DISABLE_RDWR
-#endif // NFILE_DISABLE_RDWR
-
-#define NFILE_DISABLE_RDWR 1
-
-#endif // (defined(NFILE_DISABLE_READ) && NFILE_DISABLE_READ == 1) || (defined(NFILE_DISABLE_WRITE) && NFILE_DISABLE_WRITE == 1)
-#endif // !defined(NFILE_DISABLE_RDWR) || NFILE_DISABLE_RDWR != 1
-
-#if !defined(NFILE_DISABLE_RDWR) || NFILE_DISABLE_RDWR != 1
 
 NFILE_API nfile_t nfile_open_rw(const nfile_path_t pathname);
 
@@ -214,4 +139,4 @@ NFILE_API ssize_t nfile_get_length(nfile_t nfile);
 #define NFILE_GET_LENGTH(nfile) nfile_get_length(nfile)
 
 #endif // !defined(NFILE_DISABLE) || NFILE_DISABLE != 1
-#endif // !__FILE_H__
+#endif // !__NFILE_H__

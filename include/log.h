@@ -35,29 +35,7 @@
  * and should be cleaned up with `log_destroy()` when no longer needed.
  */
 
-#include "nfile.h"
-
-#if defined(NFILE_DISABLE_WRITE) && NFILE_DISABLE_WRITE == 1
-
-#ifdef LOG_LEVEL_1
-#undef LOG_LEVEL_1
-#endif // LOG_LEVEL_1
-
-#ifdef LOG_LEVEL_2
-#undef LOG_LEVEL_2
-#endif // LOG_LEVEL_2
-
-#ifdef LOG_LEVEL_3
-#undef LOG_LEVEL_3
-#endif // LOG_LEVEL_3
-
-#ifdef LOG_LEVEL
-#undef LOG_LEVEL
-#endif // LOG_LEVEL
-
-#endif // defined(NFILE_DISABLE_WRITE) && NFILE_DISABLE_WRITE == 1
-
-#include "loghelper.h"
+#include "log_defs.h"
 
 #ifdef LOG_LEVEL_1
 #ifndef __LOG_H__
@@ -66,74 +44,7 @@
 #include "color.h"
 #include "nerror.h"
 
-#ifndef LOG_ON_STDOUT
-#ifdef MODULE
-#define LOG_ON_STDOUT 0
-#else // !MODULE
-#define LOG_ON_STDOUT 1
-#endif // !MODULE
-#endif // !LOG_ON_STDOUT
-
-#define LOG_INFO_COLOR COLOR_CYAN
-#define LOG_WARN_COLOR COLOR_YELLOW
-#define LOG_ERROR_COLOR COLOR_RED
-
-#define LOG_FILE_DONT_CLOSE 0x01
-#define LOG_FILE_DONT_FLUSH 0x02
-
-#define LOG_FILE_PRINT_TIME 0x04
-#define LOG_FILE_PRINT_TYPE 0x08
-#define LOG_FILE_PRINT_MSG 0x10
-#define LOG_FILE_PRINT_ENDL 0x20
-
-#define LOG_FILE_COLORABLE 0x80
-
-#ifndef LOG_SFILE_MASK
-#ifdef _WIN32
-
-#define LOG_TEMP_SFILE_MASK                                               \
-	(LOG_FILE_PRINT_TIME | LOG_FILE_PRINT_TYPE | LOG_FILE_PRINT_MSG | \
-	 LOG_FILE_PRINT_ENDL | LOG_FILE_DONT_CLOSE)
-
-#ifdef LOG_FORCE_COLOR
-#define LOG_SFILE_MASK LOG_TEMP_SFILE_MASK | LOG_FILE_COLORABLE
-#else // !LOG_FORCE_COLOR
-#define LOG_SFILE_MASK LOG_TEMP_SFILE_MASK
-#endif // !LOG_FORCE_COLOR
-
-#else // !_WIN32
-
-#define LOG_SFILE_MASK                                                    \
-	(LOG_FILE_PRINT_TIME | LOG_FILE_PRINT_TYPE | LOG_FILE_PRINT_MSG | \
-	 LOG_FILE_PRINT_ENDL | LOG_FILE_DONT_CLOSE | LOG_FILE_COLORABLE)
-
-#endif // !_WIN32
-
-#endif // !LOG_SFILE_MASK
-
-#ifndef LOG_DFILE_MASK
-
-#define LOG_DFILE_MASK                                                    \
-	(LOG_FILE_PRINT_TIME | LOG_FILE_PRINT_TYPE | LOG_FILE_PRINT_MSG | \
-	 LOG_FILE_PRINT_ENDL)
-
-#endif // !LOG_DFILE_MASK
-
-#define LOG_ERROR_S 0x6100
-
-#define LOG_REALLOC_ERROR 0x6101
-#define LOG_NFILE_OPEN_W_ERROR 0x6102
-
-#define LOG_ERROR_E LOG_NFILE_OPEN_W_ERROR
-
-#define LOG_INFO_TEXT "INFO"
-#define LOG_WARN_TEXT "WARN"
-#define LOG_ERROR_TEXT "ERROR"
-
-#define LOG_CLASS_TIME LOG_FILE_PRINT_TIME
-#define LOG_CLASS_TYPE LOG_FILE_PRINT_TYPE
-#define LOG_CLASS_MSG LOG_FILE_PRINT_MSG
-#define LOG_CLASS_ENDL LOG_FILE_PRINT_ENDL
+#include "neptune.h"
 
 #ifndef LOG_API
 #define LOG_API NEPTUNE_API

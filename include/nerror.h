@@ -41,19 +41,7 @@
 #ifndef __NERROR_H__
 #define __NERROR_H__
 
-// Internal macro to temporarily define nerror_t if not already defined
-#ifndef nerror_t
-#define nerror_t int
-#define undef_nerror_t 1
-#endif // !nerror_t
-
-#include "log.h" // Logging integration (optional for debug or error reporting)
-
-#ifdef undef_nerror_t
-#if undef_nerror_t == 1
-#undef nerror_t
-#endif // undef_nerror_t == 1
-#endif // undef_nerror_t
+#include "log_defs.h"
 
 // Set default error level if not explicitly defined
 #ifndef NERROR_LEVEL
@@ -81,6 +69,8 @@ typedef int nerror_t;
 
 #define N_OK 0x00 // No error
 #define N_ERR 0x01 // Generic error code
+
+#include "neptune.h"
 
 /**
  * @brief Create an nerror_t from a given error value.

@@ -101,12 +101,13 @@ void *memmem_s(const void *haystack, size_t haystacklen, const void *needle,
 	if (haystacklen < needlelen)
 		return NULL;
 
-	const void *end = (const void *)((const int8_t *)haystack + haystacklen - needlelen);
+	const void *end = (const void *)((const int8_t *)haystack +
+					 haystacklen - needlelen);
 	while (haystack <= end) {
 		if (memcmp(haystack, needle, needlelen) == 0)
 			return (void *)haystack;
 
-		haystack = (void*)(((int8_t*)haystack) + skip);
+		haystack = (void *)(((int8_t *)haystack) + skip);
 	}
 
 	return NULL;
