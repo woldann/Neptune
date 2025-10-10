@@ -38,6 +38,9 @@
 #ifndef __NMUTEX_H__
 #define __NMUTEX_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 #include "neptune.h"
 
 #ifdef MODULE
@@ -77,3 +80,7 @@ NEPTUNE_API void nmutex_init(pthread_mutex_t *mutex);
 #endif // !_WIN32
 #endif // !MODULE
 #endif // !__MUTEX_H__
+
+#ifdef __cplusplus
+}
+#endif

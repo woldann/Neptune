@@ -25,6 +25,10 @@
 #ifndef __COLOR_H__
 #define __COLOR_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 typedef const char *color_t;
 
 #define COLOR_RESET ((color_t) "\033[0m")
@@ -47,3 +51,7 @@ typedef const char *color_t;
 #define COLOR_BOLD_WHITE ((color_t) "\033[1;37m")
 
 #endif // !__COLOR_H__
+
+#ifdef __cplusplus
+}
+#endif

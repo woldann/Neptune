@@ -36,6 +36,9 @@
 #ifndef __NTIME_H__
 #define __NTIME_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 #include "neptune.h"
 
 typedef uint64_t ntime_t; /**< Type representing time values */
@@ -83,3 +86,7 @@ NEPTUNE_API ntime_t ntime_get_elapsed(void);
 NEPTUNE_API void ntime_get_elapsed_str(char *str);
 
 #endif // !__NTIME_H__
+
+#ifdef __cplusplus
+}
+#endif

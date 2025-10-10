@@ -35,7 +35,9 @@
 
 #ifndef __NEPTUNE_H__
 #define __NEPTUNE_H__
-
+#ifdef __cplusplus
+extern "C" {
+#endif
 #ifndef AUTHOR
 #define AUTHOR "Serkan Aksoy"
 #endif // !AUTHOR
@@ -221,6 +223,10 @@ void *neptune_memstr(const void *haystack, const char *needle,
 #endif /* !memstr */
 
 #endif // NEPTUNE_ENABLE_MEMMEM
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // !__NEPTUNE_H__
 

@@ -41,6 +41,9 @@
 #ifndef __NERROR_H__
 #define __NERROR_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 #include "log_defs.h"
 
 // Set default error level if not explicitly defined
@@ -110,3 +113,7 @@ typedef bool nerror_t;
 #define GET_ERR(error) GET_ERROR(error)
 
 #endif // !__NERROR_H__
+
+#ifdef __cplusplus
+}
+#endif

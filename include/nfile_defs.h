@@ -25,6 +25,9 @@
 #ifndef __NFILE_DEFS_H__
 #define __NFILE_DEFS_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 #ifdef MODULE
 
 #include <linux/types.h>
@@ -104,3 +107,7 @@ typedef nfile_char_t *nfile_path_t;
 
 #endif // !defined(NFILE_DISABLE) || NFILE_DISABLE != 1
 #endif // __NFILE_DEFS_H__
+
+#ifdef __cplusplus
+}
+#endif

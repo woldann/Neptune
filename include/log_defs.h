@@ -155,6 +155,10 @@
 #ifndef __LOG_DEFS_H__
 #define __LOG_DEFS_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifdef LOG_LEVEL_1
 
 #define LOG_INFO_COLOR COLOR_CYAN
@@ -212,4 +216,8 @@
 #define LOG_CLASS_ENDL LOG_FILE_PRINT_ENDL
 
 #endif // LOG_LEVEL_1
+#ifdef __cplusplus
+}
+#endif
+
 #endif // !__LOG_DEFS_H__

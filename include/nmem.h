@@ -39,6 +39,9 @@
 #ifndef __NMEM_H__
 #define __NMEM_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 #include "neptune.h"
 
 #ifdef MODULE
@@ -59,3 +62,7 @@ NEPTUNE_API void *nmem_realloc(void *ptr, size_t size);
 
 #endif // MODULE
 #endif // !__NMEM_H__
+
+#ifdef __cplusplus
+}
+#endif

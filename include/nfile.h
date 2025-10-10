@@ -25,6 +25,9 @@
 #ifndef __NFILE_H__
 #define __NFILE_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 #include "nfile_defs.h"
 
 #ifdef MODULE
@@ -140,3 +143,7 @@ NFILE_API ssize_t nfile_get_length(nfile_t nfile);
 
 #endif // !defined(NFILE_DISABLE) || NFILE_DISABLE != 1
 #endif // !__NFILE_H__
+
+#ifdef __cplusplus
+}
+#endif
