@@ -166,10 +166,11 @@ LOG_API nerror_t log_log(color_t color, const char *type, const char *format,
 #define LOG_ERROR(format, ...) \
 	log_error(format, ##__VA_ARGS__) // Shorthand for error logs
 
-#endif // !__LOG_H__
 #ifdef __cplusplus
 }
 #endif
+
+#endif // !__LOG_H__
 #else // !LOG_LEVEL_1
 #define log_can_out() (false)
 #endif // !LOG_LEVEL_1

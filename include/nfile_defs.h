@@ -106,8 +106,9 @@ typedef nfile_char_t *nfile_path_t;
 #endif // !defined(NFILE_DISABLE_RDWR) || NFILE_DISABLE_RDWR != 1
 
 #endif // !defined(NFILE_DISABLE) || NFILE_DISABLE != 1
-#endif // __NFILE_DEFS_H__
 
 #ifdef __cplusplus
 }
 #endif
+
+#endif // __NFILE_DEFS_H__

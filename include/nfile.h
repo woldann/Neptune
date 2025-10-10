@@ -142,8 +142,9 @@ NFILE_API ssize_t nfile_get_length(nfile_t nfile);
 #define NFILE_GET_LENGTH(nfile) nfile_get_length(nfile)
 
 #endif // !defined(NFILE_DISABLE) || NFILE_DISABLE != 1
-#endif // !__NFILE_H__
 
 #ifdef __cplusplus
 }
 #endif
+
+#endif // !__NFILE_H__

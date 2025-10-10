@@ -50,8 +50,9 @@ typedef const char *color_t;
 #define COLOR_BOLD_CYAN ((color_t) "\033[1;36m")
 #define COLOR_BOLD_WHITE ((color_t) "\033[1;37m")
 
-#endif // !__COLOR_H__
-
 #ifdef __cplusplus
 }
 #endif
+
+#endif // !__COLOR_H__
+

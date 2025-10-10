@@ -35,9 +35,7 @@
 
 #ifndef __NEPTUNE_H__
 #define __NEPTUNE_H__
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #ifndef AUTHOR
 #define AUTHOR "Serkan Aksoy"
 #endif // !AUTHOR
@@ -91,6 +89,10 @@ extern "C" {
 #ifndef NEPTUNE_API
 #define NEPTUNE_API
 #endif // !NEPTUNE_API
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 #ifdef MODULE
 

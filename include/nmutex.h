@@ -79,8 +79,10 @@ NEPTUNE_API void nmutex_init(pthread_mutex_t *mutex);
 
 #endif // !_WIN32
 #endif // !MODULE
-#endif // !__MUTEX_H__
 
 #ifdef __cplusplus
 }
 #endif
+
+#endif // !__MUTEX_H__
+

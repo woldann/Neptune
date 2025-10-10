@@ -112,8 +112,8 @@ typedef bool nerror_t;
 #define RET_ERR(error) RET_ERROR(error)
 #define GET_ERR(error) GET_ERROR(error)
 
-#endif // !__NERROR_H__
-
 #ifdef __cplusplus
 }
 #endif
+
+#endif // !__NERROR_H__

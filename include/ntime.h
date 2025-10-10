@@ -85,8 +85,9 @@ NEPTUNE_API ntime_t ntime_get_elapsed(void);
  */
 NEPTUNE_API void ntime_get_elapsed_str(char *str);
 
-#endif // !__NTIME_H__
-
 #ifdef __cplusplus
 }
 #endif
+
+#endif // !__NTIME_H__
+

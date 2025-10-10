@@ -61,8 +61,10 @@ NEPTUNE_API void *nmem_realloc(void *ptr, size_t size);
 #define N_FREE(addr) free(addr)
 
 #endif // MODULE
-#endif // !__NMEM_H__
 
 #ifdef __cplusplus
 }
 #endif
+
+#endif // !__NMEM_H__
+
