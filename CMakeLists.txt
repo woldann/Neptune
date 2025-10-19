@@ -14,22 +14,6 @@ target_include_directories(Neptune INTERFACE ${NEPTUNE_INCLUDE_DIR})
 target_include_directories(Neptune INTERFACE ${NEPTUNE_MODULE_RULES_DIR})
 target_sources(Neptune INTERFACE ${NEPTUNE_SOURCES})
 
-if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
-    target_compile_options(Neptune PRIVATE
-        -Wall
-        -Wextra
-        -Wpedantic
-        -Wconversion
-        -Wshadow
-        -Wformat=2
-        -Wnull-dereference
-        -Wdouble-promotion
-        -Wcast-align
-    )
-elseif (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
-    target_compile_options(Neptune PRIVATE /W4 /permissive-)
-endif()
-
 set(TESTS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/tests)
 
 add_executable(logs ${TESTS_DIR}/logs.c)
