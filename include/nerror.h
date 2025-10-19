@@ -44,6 +44,8 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+#include <stdbool.h>
 #include "log_defs.h"
 
 // Set default error level if not explicitly defined
